@@ -84,6 +84,25 @@ button { font: inherit; }
   border-bottom: 2px solid transparent;
 }
 .nav-links a.router-link-exact-active, .nav-links a:hover { color: var(--rood); border-bottom-color: var(--rood); }
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: .3rem;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.03);
+  color: var(--wit);
+}
+.nav-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  margin: 0 auto;
+  background: currentColor;
+}
 
 .site-main {
   padding-top: 76px;
@@ -731,17 +750,111 @@ button { font: inherit; }
     grid-template-columns: 1fr;
   }
   .hero-home__ball { width: 240px; height: 240px; }
+  .trip-card__body h3, .transfer-card__body h3 { font-size: clamp(1.9rem, 7vw, 3rem); }
 }
 @media (max-width: 768px) {
-  .nav-links { display: none; }
-  .site-nav__inner { padding: 1rem; }
+  .site-nav__inner {
+    padding: .85rem 1rem;
+    position: relative;
+  }
+  .nav-toggle { display: inline-flex; }
+  .nav-links {
+    position: absolute;
+    top: calc(100% + .6rem);
+    left: 1rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    gap: .4rem;
+    padding: .9rem;
+    background: rgba(10,10,10,.98);
+    border: 1px solid rgba(255,255,255,.08);
+    box-shadow: 0 20px 40px rgba(0,0,0,.28);
+  }
+  .nav-links--open { display: flex; }
+  .nav-links a {
+    padding: .8rem .2rem;
+    border-bottom-width: 1px;
+  }
+  body { background-attachment: scroll; }
   .nav-logo__image { width: 36px; height: 36px; }
   .nav-logo__text { font-size: 1.35rem; }
+  .site-main { padding-top: 72px; }
+  .hero-home {
+    min-height: calc(100svh - 72px);
+    padding-top: 5rem;
+    padding-bottom: 4rem;
+  }
+  .hero-home__inner { padding-bottom: 3rem; }
+  .hero-home__bg::before { width: 520px; height: 520px; }
+  .hero-home__bg::after { width: 320px; height: 320px; }
+  .scroll-mark { display: none; }
+  .section-block { padding: 4rem 1rem; }
+  .inner-hero { padding: 3.5rem 1rem 2.5rem; }
+  .club-grid { margin-top: 2rem; }
+  .club-text p { font-size: .98rem; line-height: 1.75; }
   .stats-strip__item { min-width: 50%; }
   .agenda-item, .match-line, .stats-mini-grid { grid-template-columns: 1fr; }
+  .agenda-item { gap: .45rem; }
+  .match-line {
+    gap: .35rem;
+    padding: .9rem 1rem;
+  }
+  .match-line__score {
+    min-width: 0;
+    text-align: left;
+  }
   .match-line__team--home { text-align: left; }
+  .standings-table { min-width: 640px; }
+  .spotlight-card__body, .trip-card__body, .squad-card--styled, .transfer-card { padding: 1rem; }
+  .transfer-card__image-wrap { min-height: 220px; }
+  .team-gallery__item--large { min-height: 280px; }
+  .squad-card__top {
+    display: grid;
+    gap: .75rem;
+  }
+  .player-photo__number { font-size: 3.2rem; }
 }
 @media (max-width: 640px) {
   .hero-home { padding-right: 1rem; padding-left: 1rem; }
+  .hero-tag, .section-kicker, .eyebrow { letter-spacing: .2em; }
+  .hero-subtitle { max-width: 18ch; margin-left: auto; margin-right: auto; }
+  .hero-buttons { flex-direction: column; }
+  .hero-button, .button { width: 100%; padding: .95rem 1.25rem; }
   .stats-strip__item { min-width: 100%; }
+  .nav-links { left: .75rem; right: .75rem; }
+  .inner-sidebox strong { font-size: 1.6rem; }
+  .notice-panel, .panel { padding: 1.15rem; }
+  .player-header { align-items: flex-start; }
+  .avatar, .shirt-number { width: 50px; height: 50px; }
+  .stats-mini-grid { gap: .6rem; }
+  .mini-stat { padding: .75rem; }
+  .mini-stat strong { font-size: 1.35rem; }
+  .trip-card__body h3, .transfer-card__body h3 { font-size: 2rem; }
+  .trip-placeholder { font-size: 2.6rem; }
+}
+@media (max-width: 480px) {
+  .site-nav__inner { gap: .75rem; }
+  .nav-logo__text {
+    gap: .35rem;
+    font-size: 1.15rem;
+    letter-spacing: .05em;
+  }
+  .hero-home__ball {
+    right: -80px;
+    bottom: -80px;
+    width: 180px;
+    height: 180px;
+  }
+  .crest-logo { width: min(180px, 52vw); }
+  .hero-title { font-size: clamp(2.8rem, 17vw, 4.5rem); }
+  .section-heading h2, .section-title h2, .inner-title { line-height: .96; }
+  .team-gallery__item--large { min-height: 220px; }
+  .transfer-card__image-wrap { min-height: 180px; }
+  .table-wrap {
+    margin-right: -1rem;
+    margin-left: -1rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
 }
