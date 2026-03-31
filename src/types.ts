@@ -1,0 +1,68 @@
+export interface MatchResult {
+  id: number;
+  date: string;
+  opponent: string;
+  home: boolean;
+  scored: number;
+  conceded: number;
+  playerOfTheMatch: string;
+}
+
+export interface StandingRow {
+  position: number;
+  team: string;
+  played: number;
+  won: number;
+  drawn: number;
+  lost: number;
+  goalsFor: number;
+  goalsAgainst: number;
+  points: number;
+}
+
+export interface Sponsor {
+  name: string;
+  category: string;
+  description: string;
+  accent: string;
+  image?: string;
+}
+
+export interface SpotlightPlayer {
+  name: string;
+  role: string;
+  highlight: string;
+  statLabel: string;
+  statValue: string;
+  image?: string;
+}
+
+export interface AgendaItem {
+  date: string;
+  title: string;
+  description: string;
+}
+
+export interface TransferUpdate {
+  name: string;
+  direction: string;
+  note: string;
+  image: string;
+}
+
+export interface PlayerStat {
+  label: string;
+  value: number | string;
+}
+
+export interface SquadPlayer {
+  name: string;
+  number: number;
+  position: string;
+  goals: number;
+  assists: number;
+  matches: number;
+  playerOfTheMatch: number;
+  image?: string;
+  customStats?: PlayerStat[];
+}
