@@ -44,47 +44,52 @@
 </template>
 
 <script setup lang="ts">
-const withBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`;
+import eindhovenBreakfastImage from '@/assets/trips/eindhoven/Eindhoven_eten_stefan.jpg';
+import eindhovenGroupImage from '@/assets/trips/eindhoven/Eindhoven_foto_groep.jpg';
+import eindhovenMilanRobbeArjenImage from '@/assets/trips/eindhoven/Eindhoven_foto_Milan_Robbe_Arjen.jpg';
+import eindhovenPedroImage from '@/assets/trips/eindhoven/Eindhoven_foto_pedro.jpg';
+import eindhovenStefanGroupImage from '@/assets/trips/eindhoven/Eindhoven_foto_stefan_groep.jpg';
+import eindhovenTowerImage from '@/assets/trips/eindhoven/Eindhoven_foto_toren.jpg';
 
 const eindhovenPhotos = [
   {
     title: 'Stevige start',
-    image: withBase('eindhoven/Eindhoven_eten_stefan.jpg'),
+    image: eindhovenBreakfastImage,
     alt: 'Stefan aan het ontbijt in Eindhoven',
     description:
       'De dag begon zoals het hoort: met een stevig ontbijt, voorzien door Onder Den Toren Veulen. Eerst goed eten, dan pas zien wat Eindhoven voor ons in petto heeft.',
   },
   {
     title: 'Nog eentje met Stefan',
-    image: withBase('eindhoven/Eindhoven_foto_stefan_groep.jpg'),
+    image: eindhovenStefanGroupImage,
     alt: 'Laatste groepsfoto met Stefan voor vertrek naar Eindhoven',
     description:
       'De laatste groepsfoto met Stefan, vlak voor we vertrokken naar Eindhoven. Zo\'n moment waarop iedereen er nog fris bijloopt en de goesting al van de gezichten spat.',
   },
   {
     title: 'Pedro in beeld',
-    image: withBase('eindhoven/Eindhoven_foto_pedro.jpg'),
+    image: eindhovenPedroImage,
     alt: 'Pedro tijdens de uitstap naar Eindhoven',
     description:
       'Pedro mocht uiteraard niet ontbreken in het album. Altijd goed voor sfeer, een straffe blik in de camera en waarschijnlijk ook een opmerking die we niet gaan herhalen.',
   },
   {
     title: 'Volle bak samen',
-    image: withBase('eindhoven/Eindhoven_foto_groep.jpg'),
+    image: eindhovenGroupImage,
     alt: 'Groepsfoto van ODT in Eindhoven',
     description:
       'Een groepsfoto zoals we ze graag hebben: iedereen samen, goeie sfeer en dat typische ODT-gevoel dat zelfs op verplaatsing gewoon mee op de bus zit.',
   },
   {
     title: 'Mannen onder elkaar',
-    image: withBase('eindhoven/Eindhoven_foto_Milan_Robbe_Arjen.jpg'),
+    image: eindhovenMilanRobbeArjenImage,
     alt: 'Milan, Robbe en Arjen in Eindhoven',
     description:
       'Ook de trio-foto mocht erbij. Milan, Robbe en Arjen tonen hier perfect hoe een uitstap eruitziet wanneer voetbal, vriendschap en een beetje ambiance samenkomen.',
   },
   {
     title: 'Eindhoven by night',
-    image: withBase('eindhoven/Eindhoven_foto_toren.jpg'),
+    image: eindhovenTowerImage,
     alt: 'Sfeerbeeld van Eindhoven tijdens de uitstap',
     description:
       'En natuurlijk ook nog een sfeerbeeld van de stad zelf. Eindhoven leverde niet alleen herinneringen op, maar ook een decor dat helemaal paste bij een topuitstap met de ploeg.',

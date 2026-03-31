@@ -7,7 +7,7 @@
       <div class="hero-home__inner">
         <div class="crest-block">
           <img
-            src="/ODT_LOGO.svg"
+            :src="logoImage"
             alt="Logo ZVK Onder Den Toren Veulen"
             class="crest-logo"
           />
@@ -82,10 +82,10 @@ Bij ons draait het om vriendschap, sfeer en samen mooie momenten beleven — van
 
         <div class="team-gallery">
           <article class="team-gallery__item team-gallery__item--large">
-            <img src="/Teamfoto.jpg" alt="Teamfoto van ZVK Onder Den Toren Veulen" />
+            <img :src="teamPhotoOne" alt="Teamfoto van ZVK Onder Den Toren Veulen" />
           </article>
           <article class="team-gallery__item">
-            <img src="/Teamfoto2.jpg" alt="Tweede teamfoto van ZVK Onder Den Toren Veulen" />
+            <img :src="teamPhotoTwo" alt="Tweede teamfoto van ZVK Onder Den Toren Veulen" />
           </article>
         </div>
       </div>
@@ -158,6 +158,9 @@ Bij ons draait het om vriendschap, sfeer en samen mooie momenten beleven — van
 import { RouterLink } from 'vue-router';
 import SectionTitle from '@/components/SectionTitle.vue';
 import { agenda, clubValues, heroStats, transfers } from '@/data/clubData';
+import logoImage from '@/assets/branding/ODT_LOGO.svg';
+import teamPhotoOne from '@/assets/teamfotos/Teamfoto.jpg';
+import teamPhotoTwo from '@/assets/teamfotos/Teamfoto2.jpg';
 
 const formatDate = (date: string) =>
   new Intl.DateTimeFormat('nl-BE', {

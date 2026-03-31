@@ -7,8 +7,14 @@ import type {
   StandingRow,
   TransferUpdate,
 } from '@/types';
-
-const withBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`;
+import schroyenPlayerCard from '@/assets/players/Schroyen_Speler_kaart.svg';
+import pedroMotmImage from '@/assets/motm/Pedro MOTM.jpg';
+import robbeMotmImage from '@/assets/motm/Robbe MOTM.jpg';
+import schroyenMotmImage from '@/assets/motm/Schroyen MOTM.jpg';
+import yoranMotmImage from '@/assets/motm/Yoran MOTM.jpg';
+import chrisNijsSponsorImage from '@/assets/sponsors/Chris Nijs Sponsor.jpg';
+import garageCarSponsorImage from '@/assets/sponsors/Garage Car sponsor.jpg';
+import devinTransferImage from '@/assets/transfers/Transfer Devin.jpg';
 
 export const teamName = 'ZVK ODT';
 
@@ -272,14 +278,14 @@ export const sponsors: Sponsor[] = [
     category: 'Hoofdsponsor',
     description: 'Voor al uw tuinwerken en klusjes is er maar 1 adres: Nijs Chris. Een vaste steunpilaar van de club die Onder Den Toren Veulen mee vooruit helpt.',
     accent: 'sunrise',
-    image: withBase('Chris Nijs Sponsor.jpg'),
+    image: chrisNijsSponsorImage,
   },
   {
     name: 'Garage Car',
     category: 'Hoofdsponsor',
     description: 'Voor alle herstellingen aan uw wagen, van alle merken, is er maar 1 adres: Garage Car. Een sterke partner die de club mee ondersteunt.',
     accent: 'field',
-    image: withBase('Garage Car sponsor.jpg'),
+    image: garageCarSponsorImage,
   },
 ];
 
@@ -290,7 +296,7 @@ export const spotlightPlayers: SpotlightPlayer[] = [
     highlight: 'Tegen Dardanet brak hij helemaal los: eerst zijn eerste van het seizoen, daarna nog twee erbij voor een hattrick en een hoofdrol in de 12-7 zege.',
     statLabel: 'MOTM',
     statValue: '17/03/2026',
-    image: withBase('Robbe MOTM.jpg'),
+    image: robbeMotmImage,
   },
   {
     name: 'Milan Schroyen',
@@ -298,7 +304,7 @@ export const spotlightPlayers: SpotlightPlayer[] = [
     highlight: 'Tegen Mamba FC scoorde hij twee keer, eerst voor de 1-1 en later opnieuw op aangeven van Yoran. Daarbovenop gaf hij ook nog de assist voor de 2-4 van Devin.',
     statLabel: 'MOTM',
     statValue: '03/02/2026',
-    image: withBase('Schroyen MOTM.jpg'),
+    image: schroyenMotmImage,
   },
   {
     name: 'Yoran Knaepen',
@@ -306,7 +312,7 @@ export const spotlightPlayers: SpotlightPlayer[] = [
     highlight: 'Tegen Dardanet was hij beslissend met twee goals, drie assists en in de slotminuten ook nog de winning goal voor de 6-7.',
     statLabel: 'MOTM',
     statValue: '04/11/2025',
-    image: withBase('Yoran MOTM.jpg'),
+    image: yoranMotmImage,
   },
   {
     name: 'Pedro Santos',
@@ -314,7 +320,7 @@ export const spotlightPlayers: SpotlightPlayer[] = [
     highlight: 'Na een schitterende wedstrijd met een hattrick en een assist was het snel duidelijk wie de Team of the Week verdiende.',
     statLabel: 'MOTM',
     statValue: '21/10/2025',
-    image: withBase('Pedro MOTM.jpg'),
+    image: pedroMotmImage,
   },
 ];
 
@@ -357,7 +363,7 @@ export const squadPlayers: SquadPlayer[] = [
     assists: 0,
     matches: 0,
     playerOfTheMatch: 0,
-    image: withBase('Schroyen_Speler_kaart.svg'),
+    image: schroyenPlayerCard,
     customStats: [
       { label: 'Goals', value: 4 },
       { label: 'Bokken gedronken', value: 155 },
@@ -515,6 +521,6 @@ export const transfers: TransferUpdate[] = [
     name: 'Devin',
     direction: 'Nieuwe transfer',
     note: 'Devin is getransfereerd naar Onder Den Toren Veulen. Een pure skiller die niet loopt, maar wel altijd iets uit zijn voeten schudt zodra hij de bal heeft.',
-    image: withBase('Transfer Devin.jpg'),
+    image: devinTransferImage,
   },
 ];

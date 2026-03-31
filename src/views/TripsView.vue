@@ -24,7 +24,7 @@
         <article class="trip-card">
           <div class="trip-card__image-wrap">
             <img
-              src="/eindhoven/Eindhoven_foto_groep.jpg"
+              :src="eindhovenGroupImage"
               alt="Groepsfoto van ODT tijdens de uitstap naar Eindhoven"
               class="trip-card__image"
             />
@@ -64,4 +64,5 @@
 
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
+import eindhovenGroupImage from '@/assets/trips/eindhoven/Eindhoven_foto_groep.jpg';
 </script>

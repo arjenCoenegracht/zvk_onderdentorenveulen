@@ -3,7 +3,7 @@
     <header class="site-nav">
       <div class="site-nav__inner">
         <RouterLink to="/" class="nav-logo">
-          <img src="/ODT_LOGO.svg" alt="Logo ZVK Onder Den Toren Veulen" class="nav-logo__image" />
+          <img :src="logoImage" alt="Logo ZVK Onder Den Toren Veulen" class="nav-logo__image" />
           <span class="nav-logo__text">
             <span>ZVK</span>
             <strong>ODT</strong>
@@ -29,4 +29,5 @@
 
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router';
+import logoImage from '@/assets/branding/ODT_LOGO.svg';
 </script>
