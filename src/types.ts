@@ -26,6 +26,12 @@ export interface Sponsor {
   description: string;
   accent: string;
   image?: string;
+  details?: {
+    address: string;
+    extraInfo: string;
+    contact?: string;
+    hours?: string;
+  };
 }
 
 export interface SpotlightPlayer {

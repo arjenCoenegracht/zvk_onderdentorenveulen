@@ -27,7 +27,12 @@
                 v-if="player.image"
                 :src="player.image"
                 :alt="`Spelerfoto van ${player.name}`"
-                class="player-photo"
+                :class="[
+                  'player-photo',
+                  {
+                    'player-photo--bipin': player.name === 'Bipin Naeten',
+                  },
+                ]"
               />
               <div v-else class="player-photo player-photo--placeholder" aria-hidden="true">
                 <div class="player-photo__silhouette"></div>

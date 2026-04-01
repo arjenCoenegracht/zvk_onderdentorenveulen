@@ -8,12 +8,18 @@ import type {
   TransferUpdate,
 } from '@/types';
 import schroyenPlayerCard from '@/assets/players/Schroyen_Speler_kaart.svg';
+import bipinPlayerImage from '@/assets/players/bipin.svg';
+import mathPlayerImage from '@/assets/players/math.svg';
+import runePlayerImage from '@/assets/players/rune.svg';
 import pedroMotmImage from '@/assets/motm/Pedro MOTM.jpg';
+import feyoMotmImage from '@/assets/motm/Feyo Kanga Wolfs.jpg';
 import robbeMotmImage from '@/assets/motm/Robbe MOTM.jpg';
 import schroyenMotmImage from '@/assets/motm/Schroyen MOTM.jpg';
 import yoranMotmImage from '@/assets/motm/Yoran MOTM.jpg';
 import chrisNijsSponsorImage from '@/assets/sponsors/Chris Nijs Sponsor.jpg';
 import garageCarSponsorImage from '@/assets/sponsors/Garage Car sponsor.jpg';
+import tPleintjeSponsorImage from '@/assets/sponsors/Frituurtpleintje.jpg';
+import odtCafeSponsorImage from '@/assets/sponsors/odt cafe logo.svg';
 import devinTransferImage from '@/assets/transfers/Transfer Devin.jpg';
 
 export const teamName = 'ZVK ODT';
@@ -276,16 +282,58 @@ export const sponsors: Sponsor[] = [
   {
     name: 'Chris Nijs',
     category: 'Hoofdsponsor',
-    description: 'Voor al uw tuinwerken en klusjes is er maar 1 adres: Nijs Chris. Een vaste steunpilaar van de club die Onder Den Toren Veulen mee vooruit helpt.',
+    description: 'Chris Nijs staat voor betrouwbare service, lokale betrokkenheid en een praktische aanpak waarop je kan rekenen.',
     accent: 'sunrise',
     image: chrisNijsSponsorImage,
+    details: {
+      address: 'Steenweg 93/201,\n 3870 Heers',
+      contact: '+32 497 69 14 97',
+      hours: 'nvt.',
+      extraInfo:
+        'Onze sponsor is een betrouwbare specialist in thuisonderhoud en klusjesdiensten, die klaarstaat voor zowel kleine herstellingen als grotere projecten in en rond de woning. Met oog voor detail en een passie voor vakmanschap zorgt hij ervoor dat elke klus professioneel en efficiënt wordt uitgevoerd.\n\n Of het nu gaat om schilderwerken, kleine renovaties, herstellingen of algemeen onderhoud, onze sponsor biedt een persoonlijke service op maat van de klant. Betrouwbaarheid, kwaliteit en klanttevredenheid staan steeds centraal.\n\n Dankzij zijn jarenlange ervaring en praktische aanpak is hij de ideale partner voor iedereen die zorgeloos wil genieten van een goed onderhouden woning.',
+    },
   },
   {
-    name: 'Garage Car',
+    name: 'Garage Kar',
     category: 'Hoofdsponsor',
-    description: 'Voor alle herstellingen aan uw wagen, van alle merken, is er maar 1 adres: Garage Car. Een sterke partner die de club mee ondersteunt.',
+    description: 'Garage KAR is al meer dan 20 jaar specialist in onderhoud en herstellingen van alle automerken, met duidelijke service en sterke vakkennis.',
     accent: 'field',
     image: garageCarSponsorImage,
+    details: {
+      address: 'Bovelingenstraat 195,\n 3870 Heers',
+      contact: '+32 495 20 85 97 info@garagekar.be',
+      hours: 'Enkel op afspraak',
+      extraInfo:
+        'Garage KAR is al meer dan 20 jaar specialist in onderhoud en herstellingen van alle automerken. Ze staan voor een sterke prijs-kwaliteitsverhouding, duidelijke offertes op voorhand en persoonlijke service zonder verrassingen.\n\nBij Garage KAR ben je geen nummer. Het atelier is open en transparant, en omdat ze enkel op afspraak werken, krijg je de tijd en service die je verdient. Ook avond- en weekendafspraken zijn mogelijk zonder meerkost, en indien nodig kan er een vervangwagen voorzien worden zodat je mobiel blijft.\n\nDiensten:\n- Onderhoud: klein en groot onderhoud, versnellingsbakolie verversen, aircoreiniging, remvloeistof verversen, koelvloeistof verversen, distributieriemservice, nazicht voor keuring, AdBlue vullen en winter- of zomernazicht.\n- Herstellingen: remschijven en blokken, ruitenwissers, schokdempers, uitlaat, startsysteem en batterij, stuurinrichting, wielophanging, versnellingsbak, koppeling, ruiten herstellen of vervangen en airconditioning.\n- Bandenservice: montage en uitbalanceren, zomer- en winterwissel, herstellen van een lekke band en uitlijning.',
+    },
+  },
+  {
+    name: 'T Pleintje',
+    category: 'Sponsor',
+    description: "Frituur 't Pleintje is een warme lokale partner waar verse frieten, snacks en persoonlijke service centraal staan.",
+    accent: 'night',
+    image: tPleintjeSponsorImage,
+    details: {
+      address: 'Bovelingenstraat 163,\n 3870 Heers',
+      contact: 'Contactgegevens nog aan te vullen',
+      hours: 'Elke dag open, behalve donderdag',
+      extraInfo:
+        "Frituur 't Pleintje in Heers wordt uitgebaat door Tibo, die elke dag klaarstaat om klanten te ontvangen met verse frieten, snacks en een glimlach. Of je nu vaste klant bent of voor het eerst langskomt, de bedoeling blijft altijd hetzelfde: snel, vriendelijk en met kwaliteit bedienen.\n\nSinds de zomer van 2025 is Tibo de trotse eigenaar van het gezellige chaletje op het plein. Met een persoonlijke aanpak en de vertrouwde kwaliteit van meer dan 30 jaar blijft Frituur 't Pleintje een vaste waarde voor iedereen die zin heeft in een snelle en smakelijke hap.\n\nBij Frituur 't Pleintje kan je terecht voor knapperige frieten, klassieke snacks en lekkere verrassingen. De service is persoonlijk, de sfeer is warm en je voelt je er meteen welkom. Een ideale stop voor wie houdt van iets eenvoudigs dat gewoon heel goed gedaan is.",
+    },
+  },
+  {
+    name: 'Onder den Toren',
+    category: 'Sponsor',
+    description: 'Café Onder den Toren in Veulen is een gezellig volkscafé waar dorpssfeer, ontmoeting en een goed glas centraal staan.',
+    accent: 'field',
+    image: odtCafeSponsorImage,
+    details: {
+      address: 'Nieuwe Steenweg 137,\n 3870 Heers',
+      contact: '+32 11 48 15 75',
+      hours:
+        'Woensdag - zaterdag open vanaf 14:00\nZon- en feestdagen open vanaf 10:00\nMaandag en dinsdag gesloten',
+      extraInfo:
+        'Café Onder den Toren in Veulen is een echt volkscafé waar gezelligheid, ontmoeting en dorpssfeer centraal staan. Het is een plek waar mensen samenkomen voor een drankje, een babbel en een fijne avond in een warme, vertrouwde omgeving.\n\n Bierliefhebbers zijn er zeker aan het juiste adres, met een mooi aanbod aan verschillende bieren, waaronder abdijbieren en trappisten. Een van de echte troeven van het café is zonder twijfel de frisse Stella, die bij veel bezoekers bijzonder in de smaak valt. Ook voor een cocktail of aperitief ben je hier welkom.'    },
   },
 ];
 
@@ -322,6 +370,15 @@ export const spotlightPlayers: SpotlightPlayer[] = [
     statValue: '21/10/2025',
     image: pedroMotmImage,
   },
+  {
+    name: 'Feyo "Kanga" Wolfs',
+    role: 'Kanga',
+    highlight:
+      'Als allereerste man of the match bewees Feyo meteen zijn klasse met twee prachtige doelpunten. Daarmee trok hij de winst over de streep en zette hij een prestatie neer die in de geschiedenisboeken komt.',
+    statLabel: 'MOTM',
+    statValue: '29/09/2025',
+    image: feyoMotmImage,
+  },
 ];
 
 export const squadPlayers: SquadPlayer[] = [
@@ -333,6 +390,7 @@ export const squadPlayers: SquadPlayer[] = [
     assists: 3,
     matches: 16,
     playerOfTheMatch: 4,
+    image: runePlayerImage,
     customStats: [
       { label: 'Goals', value: 0 },
       { label: 'Benen gebroken', value: 4 },
@@ -424,6 +482,7 @@ export const squadPlayers: SquadPlayer[] = [
     assists: 0,
     matches: 0,
     playerOfTheMatch: 0,
+    image: mathPlayerImage,
     customStats: [
       { label: 'Goals', value: 7 },
       { label: 'Paal geraakt', value: 34 },
@@ -454,6 +513,7 @@ export const squadPlayers: SquadPlayer[] = [
     assists: 0,
     matches: 0,
     playerOfTheMatch: 0,
+    image: bipinPlayerImage,
     customStats: [
       { label: 'Goals', value: 4 },
       { label: 'Geld', value: '- 501,57' },
