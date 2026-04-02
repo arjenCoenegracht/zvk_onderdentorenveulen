@@ -431,7 +431,7 @@ export const squadPlayers: SquadPlayer[] = [
     customStats: [
       { label: 'Goals', value: 15 },
       { label: 'KM afgelegd', value: 5127 },
-      { label: 'Onderuit keer onderuit gehaald', value: '1987' },
+      { label: 'Aantal keer onderuit gehaald', value: '1987' },
       { label: 'Gescout door topclubs', value: '13' },
     ],
   },
