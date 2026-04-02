@@ -24,19 +24,19 @@
     <section class="section-block">
       <div class="container competition-layout">
         <div class="panel panel--soft competition-panel competition-panel--results">
-          <h3 class="block-title">Laatste uitslagen</h3>
+          <h3 class="block-title">Wedstrijden</h3>
           <div class="match-listing">
-            <article v-for="match in results" :key="match.id" class="match-line">
-              <span class="match-line__date">{{ formatDate(match.date) }}</span>
+            <article v-for="match in combinedMatches" :key="match.key" class="match-line">
+              <span class="match-line__date">{{ match.meta }}</span>
               <span class="match-line__team match-line__team--home match-line__team--primary">
-                {{ match.home ? teamName : match.opponent }}
+                {{ match.homeTeam }}
               </span>
-              <span class="match-line__score">{{ match.scored }} - {{ match.conceded }}</span>
+              <span class="match-line__score">{{ match.score }}</span>
               <span class="match-line__team match-line__team--secondary">
-                {{ match.home ? match.opponent : teamName }}
+                {{ match.awayTeam }}
               </span>
               <span class="match-line__tag">
-                {{ match.home ? 'Thuis' : 'Uit' }}
+                {{ match.tag }}
               </span>
             </article>
           </div>
@@ -85,7 +85,7 @@
 </template>
 
 <script setup lang="ts">
-import { results, standings, teamName } from '@/data/clubData';
+import { agenda, results, standings, teamName } from '@/data/clubData';
 
 const normalizeTeamName = (value: string) =>
   value
@@ -103,9 +103,47 @@ const currentTeamStanding =
 
 const currentTeamName = currentTeamStanding.team;
 
+const toMatchDateTime = (date: string, time: string) => new Date(`${date}T${time}:00`);
+
+const upcomingMatches = [...agenda]
+  .sort((a, b) => toMatchDateTime(b.date, b.time).getTime() - toMatchDateTime(a.date, a.time).getTime())
+  .filter((match) => toMatchDateTime(match.date, match.time).getTime() >= Date.now());
+
 const formatDate = (date: string) =>
   new Intl.DateTimeFormat('nl-BE', {
     day: '2-digit',
     month: 'short',
   }).format(new Date(date));
+
+const splitMatchTitle = (title: string) => {
+  const [home, away] = title.split(' vs. ');
+  return {
+    home: home ?? title,
+    away: away ?? '',
+  };
+};
+
+const combinedMatches = [
+  ...upcomingMatches.map((match) => {
+    const teams = splitMatchTitle(match.title);
+    return {
+      key: `${match.title}-${match.date}-upcoming`,
+      meta: `${formatDate(match.date)} - ${match.time}`,
+      homeTeam: teams.home,
+      awayTeam: teams.away,
+      score: '-',
+      tag: match.description.startsWith('Thuis') ? 'Thuis' : 'Uit',
+    };
+  }),
+  ...[...results].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((match) => ({
+    key: `result-${match.id}`,
+    meta: formatDate(match.date),
+    homeTeam: match.home ? teamName : match.opponent,
+    awayTeam: match.home ? match.opponent : teamName,
+    score: match.home
+      ? `${match.scored} - ${match.conceded}`
+      : `${match.conceded} - ${match.scored}`,
+    tag: match.home ? 'Thuis' : 'Uit',
+  })),
+];
 </script>

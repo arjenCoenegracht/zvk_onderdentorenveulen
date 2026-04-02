@@ -8,12 +8,21 @@
           <p class="inner-copy">
             Wie er bijloopt in rood en zwart, met de cijfers van dit seizoen erbij.
           </p>
+          <div class="players-spotlight-callout">
+            <p>
+              Dit zijn de {{ squadPlayers.length }} mannen die er elke week staan.
+              Benieuwd wie echt het verschil maken?
+            </p>
+            <RouterLink class="button button-primary players-spotlight-callout__button" to="/spotlight">
+              Bekijk de MOTM
+            </RouterLink>
+          </div>
         </div>
 
         <aside class="inner-sidebox">
           <p class="section-kicker">Kern</p>
           <strong>{{ squadPlayers.length }} spelers</strong>
-          <span>Van keeper tot pivot</span>
+          <span>Van keeper tot bankzitter</span>
         </aside>
       </div>
     </section>
@@ -81,5 +90,6 @@
 </template>
 
 <script setup lang="ts">
+import { RouterLink } from 'vue-router';
 import { squadPlayers } from '@/data/clubData';
 </script>

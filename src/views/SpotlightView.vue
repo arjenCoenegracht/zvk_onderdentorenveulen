@@ -26,7 +26,13 @@
               v-if="player.image"
               :src="player.image"
               :alt="`MOTM-foto van ${player.name}`"
-              class="spotlight-card__image"
+              :class="[
+                'spotlight-card__image',
+                {
+                  'spotlight-card__image--robbe': player.name === 'Robbe Grosemans',
+                  'spotlight-card__image--yoran': player.name === 'Yoran Knaepen',
+                },
+              ]"
             />
             <div v-else class="spotlight-card__fallback">{{ initials(player.name) }}</div>
           </div>

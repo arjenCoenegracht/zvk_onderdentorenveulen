@@ -17,6 +17,7 @@ const router = createRouter({
     { path: '/spotlight', name: 'spotlight', component: SpotlightView },
     { path: '/uitstapjes', name: 'trips', component: TripsView },
     { path: '/uitstapjes/eindhoven', name: 'trip-eindhoven', component: EindhovenView },
+    { path: '/:pathMatch(.*)*', redirect: '/' },
   ],
   scrollBehavior() {
     return { top: 0 };

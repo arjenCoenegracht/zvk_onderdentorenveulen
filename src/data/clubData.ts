@@ -11,11 +11,18 @@ import schroyenPlayerCard from '@/assets/players/Schroyen_Speler_kaart.svg';
 import bipinPlayerImage from '@/assets/players/bipin.svg';
 import mathPlayerImage from '@/assets/players/math.svg';
 import runePlayerImage from '@/assets/players/rune.svg';
-import pedroMotmImage from '@/assets/motm/Pedro MOTM.jpg';
-import feyoMotmImage from '@/assets/motm/Feyo Kanga Wolfs.jpg';
-import robbeMotmImage from '@/assets/motm/Robbe MOTM.jpg';
-import schroyenMotmImage from '@/assets/motm/Schroyen MOTM.jpg';
-import yoranMotmImage from '@/assets/motm/Yoran MOTM.jpg';
+import devinPlayerImage from '@/assets/players/Devin.svg'
+import nicolasPlayerImage from '@/assets/players/Libert.svg'
+import rensPlayerImage from '@/assets/players/Rens.svg'
+import robbePlayerImage from '@/assets/players/Robbe.svg'
+import yoranPlayerImage from '@/assets/players/Yoran.svg'
+import arjenPlayerImage from '@/assets/players/Arjen.svg'
+import pedroPlayerImage from '@/assets/players/Pedro.svg'
+import pedroMotmImage from '@/assets/motm/Pedro MOTM.svg';
+import feyoMotmImage from '@/assets/motm/Feyo Kanga Wolfs.svg';
+import robbeMotmImage from '@/assets/motm/Robbe MOTM.svg';
+import schroyenMotmImage from '@/assets/motm/Schroyen MOTM.svg';
+import yoranMotmImage from '@/assets/motm/Yoran MOTM.svg';
 import chrisNijsSponsorImage from '@/assets/sponsors/Chris Nijs Sponsor.jpg';
 import garageCarSponsorImage from '@/assets/sponsors/Garage Car sponsor.jpg';
 import tPleintjeSponsorImage from '@/assets/sponsors/Frituurtpleintje.jpg';
@@ -24,16 +31,12 @@ import devinTransferImage from '@/assets/transfers/Transfer Devin.jpg';
 
 export const teamName = 'ZVK ODT';
 
-export const heroStats = [
-  { value: '14', label: 'Gespeelde matchen' },
-  { value: '24', label: 'Punten gepakt' },
-  { value: '68', label: 'Doelpunten gemaakt' },
-];
-
 export const clubValues = [
-  'De trouwste supporters van de hele liga.',
-  'De ploeg waar plezier nog altijd op de eerste plaats staat.',
-  'Een hechte groep die samen knokt, lacht en blijft hangen na de match.',
+  'Inzet op en naast het veld',
+  'Altijd ambiance op en naast het veld',
+  'De meeste en luidste supporters van de reeks',
+  'Niemand een makkelijke avond geven',
+  'Samen uit, samen thuis'
 ];
 
 export const results: MatchResult[] = [
@@ -44,7 +47,6 @@ export const results: MatchResult[] = [
     home: true,
     scored: 4,
     conceded: 2,
-    playerOfTheMatch: 'Nog niet ingevuld',
   },
   {
     id: 2,
@@ -53,7 +55,6 @@ export const results: MatchResult[] = [
     home: false,
     scored: 2,
     conceded: 4,
-    playerOfTheMatch: 'Nog niet ingevuld',
   },
   {
     id: 3,
@@ -62,7 +63,6 @@ export const results: MatchResult[] = [
     home: true,
     scored: 10,
     conceded: 2,
-    playerOfTheMatch: 'Nog niet ingevuld',
   },
   {
     id: 4,
@@ -71,7 +71,6 @@ export const results: MatchResult[] = [
     home: false,
     scored: 7,
     conceded: 6,
-    playerOfTheMatch: 'Nog niet ingevuld',
   },
   {
     id: 5,
@@ -80,7 +79,6 @@ export const results: MatchResult[] = [
     home: true,
     scored: 2,
     conceded: 3,
-    playerOfTheMatch: 'Nog niet ingevuld',
   },
   {
     id: 6,
@@ -89,7 +87,6 @@ export const results: MatchResult[] = [
     home: false,
     scored: 1,
     conceded: 3,
-    playerOfTheMatch: 'Nog niet ingevuld',
   },
   {
     id: 7,
@@ -98,7 +95,6 @@ export const results: MatchResult[] = [
     home: true,
     scored: 6,
     conceded: 5,
-    playerOfTheMatch: 'Nog niet ingevuld',
   },
   {
     id: 8,
@@ -107,7 +103,6 @@ export const results: MatchResult[] = [
     home: false,
     scored: 1,
     conceded: 5,
-    playerOfTheMatch: 'Nog niet ingevuld',
   },
   {
     id: 9,
@@ -116,7 +111,6 @@ export const results: MatchResult[] = [
     home: true,
     scored: 4,
     conceded: 5,
-    playerOfTheMatch: 'Nog niet ingevuld',
   },
   {
     id: 10,
@@ -125,7 +119,6 @@ export const results: MatchResult[] = [
     home: false,
     scored: 4,
     conceded: 2,
-    playerOfTheMatch: 'Nog niet ingevuld',
   },
   {
     id: 11,
@@ -134,7 +127,6 @@ export const results: MatchResult[] = [
     home: true,
     scored: 1,
     conceded: 6,
-    playerOfTheMatch: 'Nog niet ingevuld',
   },
   {
     id: 12,
@@ -143,7 +135,6 @@ export const results: MatchResult[] = [
     home: false,
     scored: 10,
     conceded: 5,
-    playerOfTheMatch: 'Nog niet ingevuld',
   },
   {
     id: 13,
@@ -152,7 +143,6 @@ export const results: MatchResult[] = [
     home: true,
     scored: 12,
     conceded: 7,
-    playerOfTheMatch: 'Nog niet ingevuld',
   },
   {
     id: 14,
@@ -161,7 +151,6 @@ export const results: MatchResult[] = [
     home: false,
     scored: 3,
     conceded: 4,
-    playerOfTheMatch: 'Nog niet ingevuld',
   },
 ];
 
@@ -203,12 +192,12 @@ export const standings: StandingRow[] = [
     position: 4,
     team: 'Onder De Toren Veulen',
     played: 14,
-    won: 8,
+    won: 7,
     drawn: 0,
     lost: 7,
-    goalsFor: 68,
-    goalsAgainst: 56,
-    points: 24,
+    goalsFor: 67,
+    goalsAgainst: 59,
+    points: 21,
   },
   {
     position: 5,
@@ -280,7 +269,7 @@ export const standings: StandingRow[] = [
 
 export const sponsors: Sponsor[] = [
   {
-    name: 'Chris Nijs',
+    name: 'Nijs Chris',
     category: 'Hoofdsponsor',
     description: 'Chris Nijs staat voor betrouwbare service, lokale betrokkenheid en een praktische aanpak waarop je kan rekenen.',
     accent: 'sunrise',
@@ -406,6 +395,7 @@ export const squadPlayers: SquadPlayer[] = [
     assists: 0,
     matches: 0,
     playerOfTheMatch: 0,
+    image: arjenPlayerImage,
     customStats: [
       { label: 'Goals', value: 1 },
       { label: 'Kapotte benen', value: '1,5' },
@@ -437,6 +427,7 @@ export const squadPlayers: SquadPlayer[] = [
     assists: 0,
     matches: 0,
     playerOfTheMatch: 0,
+    image: yoranPlayerImage,
     customStats: [
       { label: 'Goals', value: 15 },
       { label: 'KM afgelegd', value: 5127 },
@@ -452,6 +443,7 @@ export const squadPlayers: SquadPlayer[] = [
     assists: 0,
     matches: 0,
     playerOfTheMatch: 0,
+    image: rensPlayerImage,
     customStats: [
       { label: 'Goals', value: 11 },
       { label: "Panna's uitgedeeld", value: 23 },
@@ -467,6 +459,7 @@ export const squadPlayers: SquadPlayer[] = [
     assists: 0,
     matches: 0,
     playerOfTheMatch: 0,
+    image: pedroPlayerImage,
     customStats: [
       { label: 'Goals', value: 12 },
       { label: 'Gepast ipv geschoten', value: 45 },
@@ -498,6 +491,7 @@ export const squadPlayers: SquadPlayer[] = [
     assists: 0,
     matches: 0,
     playerOfTheMatch: 0,
+    image: devinPlayerImage,
     customStats: [
       { label: 'Goals', value: 4 },
       { label: "Pizza's gegeten", value: '>1' },
@@ -529,6 +523,7 @@ export const squadPlayers: SquadPlayer[] = [
     assists: 0,
     matches: 12,
     playerOfTheMatch: 0,
+    image: robbePlayerImage,
     customStats: [
       { label: 'Goals', value: 3 },
       { label: 'Geschreeuwd', value: 12 },
@@ -544,6 +539,7 @@ export const squadPlayers: SquadPlayer[] = [
     assists: 0,
     matches: 0,
     playerOfTheMatch: 0,
+    image: nicolasPlayerImage,
     customStats: [
       { label: 'Goals', value: 4 },
       { label: 'Schotkracht', value: '200 km/h' },
@@ -556,21 +552,25 @@ export const squadPlayers: SquadPlayer[] = [
 export const agenda: AgendaItem[] = [
   {
     date: '2026-04-20',
+    time: '21:00',
     title: 'Onder Den Toren Veulen vs. BIH United',
     description: 'Thuiswedstrijd om 21:00.',
   },
   {
     date: '2026-05-04',
+    time: '19:00',
     title: 'FC De Schuddertjes vs. Onder Den Toren Veulen',
     description: 'Uitwedstrijd om 19:00.',
   },
   {
     date: '2026-05-18',
+    time: '19:00',
     title: 'Onder Den Toren Veulen vs. Ham Hoepertingen',
     description: 'Thuiswedstrijd om 19:00.',
   },
   {
     date: '2026-06-01',
+    time: '19:00',
     title: 'Dynamo Heers vs. Onder Den Toren Veulen',
     description: 'Uitwedstrijd om 19:00.',
   },
@@ -580,7 +580,14 @@ export const transfers: TransferUpdate[] = [
   {
     name: 'Devin',
     direction: 'Nieuwe transfer',
-    note: 'Devin is getransfereerd naar Onder Den Toren Veulen. Een pure skiller die niet loopt, maar wel altijd iets uit zijn voeten schudt zodra hij de bal heeft.',
+    headline: 'ODT haalt uit met dure stunttransfer',
+    note: 'Onder Den Toren Veulen heeft diep in de buidel moeten tasten om Devin binnen te halen. Na lange onderhandelingen, stevige concurrentie van onder meer Wellen en zelfs geruchten rond Barcelona, koos de skiller uiteindelijk toch voor ODT.',
     image: devinTransferImage,
+    article: [
+      'Onder Den Toren Veulen heeft zich deze week stevig laten gelden op de transfermarkt met de komst van Devin. De club deed er achter de schermen alles aan om hem binnen te halen en moest daarvoor diep in de buidel tasten.',
+      'De transfer was allesbehalve vanzelfsprekend, want ook Wellen zat naar verluidt stevig op het dossier en zelfs Barcelona werd in de wandelgangen genoemd. Dat ODT hem uiteindelijk toch wist te strikken, maakt de deal alleen maar straffer.',
+      'Waarom Devin? Omdat hij een speler is die met een actie een match kan openbreken. Technisch sterk, onvoorspelbaar en iemand waarvoor mensen rechtstaan zodra hij aan de bal komt. Binnen de club wordt zelfs lachend gezegd dat hij op een seizoen misschien maar 67 meter loopt, maar in die paar meters wel meer verschil maakt dan een ander in een hele match.',
+      'Met deze transfer wil ODT duidelijk tonen dat het ambitie heeft. De komst van Devin is een statement - nu is het aan hem om dat op het veld te bevestigen.',
+    ],
   },
 ];

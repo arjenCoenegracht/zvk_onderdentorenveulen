@@ -7,14 +7,14 @@
           <h1 class="inner-title">Momenten naast het veld.</h1>
           <p class="inner-copy">
             Hier verzamelen we de uitstapjes van ODT. Elke trip krijgt z'n eigen plekje,
-            zodat we later makkelijk kunnen uitbreiden met onder meer de kerstmarkt.
+            zodat alle herinneringen naast het veld mooi samen blijven.
           </p>
         </div>
 
         <aside class="inner-sidebox">
           <p class="section-kicker">Albums</p>
           <strong>1 uitstap live</strong>
-          <span>Eindhoven staat klaar, kerstmarkt volgt binnenkort.</span>
+          <span>Eindhoven staat klaar in het eerste album.</span>
         </aside>
       </div>
     </section>
@@ -40,21 +40,6 @@
             <RouterLink to="/uitstapjes/eindhoven" class="button button-primary">
               Bekijk Eindhoven
             </RouterLink>
-          </div>
-        </article>
-
-        <article class="trip-card trip-card--placeholder">
-          <div class="trip-card__image-wrap trip-card__image-wrap--placeholder">
-            <div class="trip-placeholder">Kerstmarkt</div>
-          </div>
-
-          <div class="trip-card__body">
-            <p class="section-kicker">Binnenkort</p>
-            <h3>Kerstmarkt</h3>
-            <p>
-              Hier komt straks het volgende mapje bij. Zodra de foto's klaarstaan, kunnen we
-              deze uitstap meteen op dezelfde manier toevoegen.
-            </p>
           </div>
         </article>
       </div>

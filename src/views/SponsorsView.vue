@@ -25,6 +25,7 @@
           :key="sponsor.name"
           class="sponsor-card sponsor-card--styled"
           :data-accent="sponsor.accent"
+          :data-sponsor="sponsor.name"
         >
           <div v-if="sponsor.image" class="sponsor-card__image-wrap">
             <img
@@ -32,6 +33,7 @@
               :alt="`Sponsorbeeld van ${sponsor.name}`"
               :class="[
                 'sponsor-card__image',
+                'js-lightbox-trigger',
                 {
                   'sponsor-card__image--pleintje': sponsor.name === 'T Pleintje',
                   'sponsor-card__image--odt-cafe': sponsor.name === 'Onder den Toren',
@@ -50,14 +52,6 @@
             Meer over deze partner
           </button>
         </article>
-      </div>
-    </section>
-
-    <section class="section-block section-block--dark">
-      <div class="container">
-        <div class="callout callout--tight">
-          <h3>De partners hieronder helpen de club mee draaien, op en naast het veld.</h3>
-        </div>
       </div>
     </section>
 
@@ -96,6 +90,7 @@
               :alt="`Sponsorbeeld van ${selectedSponsor.name}`"
               :class="[
                 'modal-card__image',
+                'js-lightbox-trigger',
                 {
                   'modal-card__image--pleintje': selectedSponsor.name === 'T Pleintje',
                   'modal-card__image--odt-cafe': selectedSponsor.name === 'Onder den Toren',

@@ -20,15 +20,6 @@
           Veulen
         </h1>
         <p class="hero-subtitle">Kleine goals, grote dorst.</p>
-
-        <div class="hero-buttons">
-          <RouterLink class="hero-button hero-button--solid" to="/competitie">
-            Wedstrijden
-          </RouterLink>
-          <RouterLink class="hero-button hero-button--ghost" to="/spelers">
-            Onze kern
-          </RouterLink>
-        </div>
       </div>
 
       <div class="scroll-mark">
@@ -38,14 +29,11 @@
     </section>
 
     <section class="stats-strip">
-      <article v-for="stat in heroStats" :key="stat.label" class="stats-strip__item">
-        <strong>{{ stat.value }}</strong>
-        <span>{{ stat.label }}</span>
-      </article>
-      <article class="stats-strip__item">
-        <strong>1</strong>
-        <span>Ploeg</span>
-      </article>
+      <div class="stats-strip__hero">
+        <span>Volgende match</span>
+        <strong>{{ nextMatch ? formatMatchTitle(nextMatch.title) : 'Nog niet bekend' }}</strong>
+        <small>{{ nextMatch ? `${formatShortDate(nextMatch.date)} - ${nextMatch.time}` : 'Hou de agenda in de gaten' }}</small>
+      </div>
     </section>
 
     <section class="section-block section-block--dark">
@@ -58,19 +46,22 @@
         <div class="club-grid">
           <div class="club-text">
             <p>
-              Wij zijn een hechte vriendengroep uit de regio Heers, verbonden door onze passie voor voetbal, teamspirit en plezier. Op het veld geven we alles, en ook naast het veld staat gezelligheid centraal.
-
-Bij ons draait het om vriendschap, sfeer en samen mooie momenten beleven — van een stevige match tot een sterke derde helft.
-              
+              Allemaal gasten uit de regio Heers die nog altijd stiekem hopen op een
+              profdebuut (we wachten nog op de scouting).
+              <br />
+              Op het veld proberen we vooral niet af te gaan: achteraan alles dicht gooien en
+              vooraan hopen op een toevalstreffer of een moment van pure klasse dat we
+              zelf ook niet zagen aankomen.
             </p>
             <p>
-              Op deze site vind je gewoon wat je nodig hebt: uitslagen, stand, spelers,
-              sponsors en wie de voorbije weken het verschil maakte.
+              Techniek zit er soms in, conditie meestal iets minder. Maar zolang er
+              gevochten wordt voor elke bal en voor de laatste pint, zit het helemaal
+              goed.
             </p>
           </div>
 
           <aside class="notice-panel focus-panel">
-            <p class="section-kicker">Waar ODT voor staat</p>
+            <p class="section-kicker">DE ODT-MENTALITEIT</p>
             <div class="focus-stack">
               <article v-for="item in clubValues" :key="item" class="focus-item">
                 <span></span>
@@ -81,6 +72,11 @@ Bij ons draait het om vriendschap, sfeer en samen mooie momenten beleven — van
         </div>
 
         <div class="team-gallery">
+          <div class="team-gallery__cta">
+            <RouterLink class="button button-primary" to="/spelers">
+              Bekijk de spelerskern
+            </RouterLink>
+          </div>
           <article class="team-gallery__item team-gallery__item--large">
             <img :src="teamPhotoOne" alt="Teamfoto van ZVK Onder Den Toren Veulen" />
           </article>
@@ -93,12 +89,18 @@ Bij ons draait het om vriendschap, sfeer en samen mooie momenten beleven — van
 
     <section class="section-block">
       <div class="container home-grid-two">
-        <div class="panel panel--soft">
+        <div class="panel panel--soft home-info-panel">
           <SectionTitle
             eyebrow="Komt eraan"
             title="Agenda"
             description="De komende momenten op en rond de club."
           />
+
+          <div class="home-panel-action">
+            <RouterLink class="button button-primary" to="/competitie">
+              Bekijk alle wedstrijden
+            </RouterLink>
+          </div>
 
           <div class="agenda-list">
             <article v-for="item in agenda" :key="item.title" class="agenda-item">
@@ -111,24 +113,119 @@ Bij ons draait het om vriendschap, sfeer en samen mooie momenten beleven — van
           </div>
         </div>
 
-        <div class="panel panel--red">
+        <div class="panel panel--red home-info-panel">
           <SectionTitle
-            eyebrow="Kort gezegd"
-            title="Wat je hier meteen vindt"
-            description="Geen overbodige ballast. Gewoon snel de juiste info."
+            eyebrow="Stand"
+            title="Klassement"
+            description="Een snelle blik op de top van de reeks."
           />
 
-          <ul class="feature-list">
-            <li>Resultaten en stand van de ploeg</li>
-            <li>Volledige spelerskern met statistieken</li>
-            <li>Sponsors en partners van de club</li>
-            <li>Spelers die in de kijker staan</li>
-          </ul>
+          <div class="home-panel-action home-panel-action--top">
+            <RouterLink class="button button-primary" to="/competitie">
+              Bekijk volledige klassement
+            </RouterLink>
+          </div>
+
+          <div class="table-wrap">
+            <table class="standings-table">
+              <thead>
+                <tr>
+                  <th class="standings-table__rank">#</th>
+                  <th>Ploeg</th>
+                  <th>GP</th>
+                  <th>Pts</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  v-for="row in homeStandings"
+                  :key="row.team"
+                  :class="{ 'is-team-row': row.team === currentTeamStanding.team }"
+                >
+                  <td class="standings-table__rank">{{ row.position }}</td>
+                  <td>{{ row.team }}</td>
+                  <td>{{ row.played }}</td>
+                  <td>{{ row.points }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="section-block section-block--dark">
+      <div class="container">
+        <SectionTitle
+          eyebrow="Naast het veld"
+          title="Meer dan alleen voetbal"
+          description="Ook buiten de lijnen leeft ODT verder, met uitstapjes en partners die de club mee dragen."
+        />
+
+        <div class="home-grid-two home-grid-two--showcase">
+          <div class="panel panel--soft home-info-panel">
+            <SectionTitle
+              eyebrow="Laatste uitstap"
+              title="Eindhoven"
+              description="Van ontbijt tot groepsfoto: Eindhoven was de laatste uitstap van ODT en kreeg meteen een eigen album."
+            />
+
+            <div class="home-panel-action home-panel-action--top">
+              <RouterLink to="/uitstapjes" class="button button-primary">
+                Bekijk alle uitstapjes
+              </RouterLink>
+            </div>
+
+            <article class="home-showcase-feature">
+              <div class="home-showcase-feature__image-wrap">
+                <img
+                  :src="eindhovenGroupImage"
+                  alt="Groepsfoto van ODT tijdens de uitstap naar Eindhoven"
+                  class="home-showcase-feature__image"
+                />
+              </div>
+            </article>
+          </div>
+
+          <div class="panel panel--red home-info-panel home-info-panel--sponsors">
+            <SectionTitle
+              eyebrow="Partners"
+              title="Hoofdsponsors"
+              description="Dankzij deze partners blijft ODT draaien, op en naast het veld."
+            />
+
+            <div class="home-panel-action home-panel-action--top">
+              <RouterLink to="/sponsors" class="button button-primary">
+                Bekijk alle sponsors
+              </RouterLink>
+            </div>
+
+            <div class="home-sponsor-highlights">
+              <article
+                v-for="sponsor in featuredSponsors"
+                :key="sponsor.name"
+                class="home-sponsor-highlights__item"
+                :data-accent="sponsor.accent"
+              >
+                <div v-if="sponsor.image" class="home-sponsor-highlights__image-wrap">
+                  <img
+                    :src="sponsor.image"
+                    :alt="`Logo van ${sponsor.name}`"
+                    :class="[
+                      'home-sponsor-highlights__image',
+                      'js-lightbox-trigger',
+                    ]"
+                  />
+                </div>
+                <p>{{ sponsor.name }}</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block">
       <div class="container">
         <SectionTitle
           eyebrow="Transfers"
@@ -144,23 +241,100 @@ Bij ons draait het om vriendschap, sfeer en samen mooie momenten beleven — van
 
             <div class="transfer-card__body">
               <p class="section-kicker">{{ item.direction }}</p>
-              <h3>{{ item.name }}</h3>
+              <h3>{{ item.headline }}</h3>
               <p>{{ item.note }}</p>
+              <button
+                type="button"
+                class="button button-primary transfer-card__button"
+                @click="selectedTransfer = item"
+              >
+                Bekijk volledig artikel
+              </button>
             </div>
           </article>
         </div>
       </div>
     </section>
+
+    <div
+      v-if="selectedTransfer"
+      class="modal-backdrop"
+      @click.self="selectedTransfer = null"
+    >
+      <article class="modal-card">
+        <div class="modal-card__header">
+          <div>
+            <p class="section-kicker">{{ selectedTransfer.direction }}</p>
+            <h2>{{ selectedTransfer.headline }}</h2>
+          </div>
+          <button type="button" class="modal-close" @click="selectedTransfer = null">
+            Sluiten
+          </button>
+        </div>
+
+        <div class="modal-card__content">
+          <div class="modal-card__image-wrap">
+            <img
+              :src="selectedTransfer.image"
+              :alt="`Transferfoto van ${selectedTransfer.name}`"
+              class="modal-card__image modal-card__image--transfer"
+            />
+          </div>
+
+          <div class="modal-card__panel">
+            <h3>{{ selectedTransfer.name }}</h3>
+            <p v-for="paragraph in selectedTransfer.article" :key="paragraph">
+              {{ paragraph }}
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { onBeforeUnmount, ref, watch } from 'vue';
 import { RouterLink } from 'vue-router';
 import SectionTitle from '@/components/SectionTitle.vue';
-import { agenda, clubValues, heroStats, transfers } from '@/data/clubData';
+import { agenda, clubValues, sponsors, standings, teamName, transfers } from '@/data/clubData';
+import type { TransferUpdate } from '@/types';
 import logoImage from '@/assets/branding/ODT_LOGO.svg';
 import teamPhotoOne from '@/assets/teamfotos/Teamfoto.jpg';
 import teamPhotoTwo from '@/assets/teamfotos/Teamfoto2.jpg';
+import eindhovenGroupImage from '@/assets/trips/eindhoven/Eindhoven_foto_groep.jpg';
+
+const normalizeTeamName = (value: string) =>
+  value
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
+    .toLowerCase();
+
+const teamAliases = ['onder de toren veulen', 'zvk odt', teamName];
+
+const currentTeamStanding =
+  standings.find((row) =>
+    teamAliases.some((alias) => normalizeTeamName(row.team).includes(normalizeTeamName(alias))),
+  ) ?? standings[0];
+
+const homeStandings = standings.slice(0, 5);
+const featuredSponsors = sponsors.filter((sponsor) => sponsor.category === 'Hoofdsponsor');
+const selectedTransfer = ref<TransferUpdate | null>(null);
+
+watch(selectedTransfer, (value) => {
+  document.body.classList.toggle('has-transfer-modal', Boolean(value));
+});
+
+onBeforeUnmount(() => {
+  document.body.classList.remove('has-transfer-modal');
+});
+
+const toMatchDateTime = (date: string, time: string) => new Date(`${date}T${time}:00`);
+
+const nextMatch =
+  [...agenda]
+    .sort((a, b) => toMatchDateTime(a.date, a.time).getTime() - toMatchDateTime(b.date, b.time).getTime())
+    .find((item) => toMatchDateTime(item.date, item.time).getTime() >= Date.now()) ?? null;
 
 const formatDate = (date: string) =>
   new Intl.DateTimeFormat('nl-BE', {
@@ -168,4 +342,12 @@ const formatDate = (date: string) =>
     month: 'long',
     year: 'numeric',
   }).format(new Date(date));
+
+const formatShortDate = (date: string) =>
+  new Intl.DateTimeFormat('nl-BE', {
+    day: 'numeric',
+    month: 'long',
+  }).format(new Date(date));
+
+const formatMatchTitle = (title: string) => title.replace(' vs. ', ' - ');
 </script>

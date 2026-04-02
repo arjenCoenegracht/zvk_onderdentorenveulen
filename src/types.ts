@@ -5,7 +5,6 @@ export interface MatchResult {
   home: boolean;
   scored: number;
   conceded: number;
-  playerOfTheMatch: string;
 }
 
 export interface StandingRow {
@@ -45,6 +44,7 @@ export interface SpotlightPlayer {
 
 export interface AgendaItem {
   date: string;
+  time: string;
   title: string;
   description: string;
 }
@@ -52,8 +52,10 @@ export interface AgendaItem {
 export interface TransferUpdate {
   name: string;
   direction: string;
+  headline: string;
   note: string;
   image: string;
+  article: string[];
 }
 
 export interface PlayerStat {
