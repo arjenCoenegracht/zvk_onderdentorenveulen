@@ -22,13 +22,18 @@
         <p class="hero-subtitle">Kleine goals, grote dorst.</p>
       </div>
 
-      <div class="scroll-mark">
+      <a
+        v-if="!hasScrolled"
+        href="#home-next-section"
+        class="scroll-mark scroll-mark--prominent"
+        aria-label="Scroll naar beneden"
+      >
         <span>Scroll</span>
         <div></div>
-      </div>
+      </a>
     </section>
 
-    <section class="stats-strip">
+    <section id="home-next-section" class="stats-strip">
       <div class="stats-strip__hero">
         <span>Volgende match</span>
         <strong>{{ nextMatch ? formatMatchTitle(nextMatch.title) : 'Nog niet bekend' }}</strong>
@@ -46,17 +51,18 @@
         <div class="club-grid">
           <div class="club-text">
             <p>
-              Allemaal gasten uit de regio Heers die nog altijd stiekem hopen op een
-              profdebuut (we wachten nog op de scouting).
+              Een bende gasten uit de regio Heers die nog altijd dromen van een profcarriere,
+              al is de kans groter dat we ooit ontdekt worden aan de toog dan op het veld.
               <br />
-              Op het veld proberen we vooral niet af te gaan: achteraan alles dicht gooien en
-              vooraan hopen op een toevalstreffer of een moment van pure klasse dat we
-              zelf ook niet zagen aankomen.
+              <br />
+              In de zaal is het plan simpel: achteraan alles dichtgooien, in balverlies samen
+              panikeren en vooraan hopen op een toevalstreffer, een afgeweken bal of een flits
+              van klasse die niemand zag aankomen.
             </p>
             <p>
-              Techniek zit er soms in, conditie meestal iets minder. Maar zolang er
-              gevochten wordt voor elke bal en voor de laatste pint, zit het helemaal
-              goed.
+              Techniek zit er soms in, conditie meestal niet. Maar zolang er hard genoeg geroepen
+              wordt alsof we weten waar we mee bezig zijn en niet iedereen al na twee minuten
+              met de handen op de knieën staat, mogen we eigenlijk niet klagen.
             </p>
           </div>
 
@@ -78,10 +84,18 @@
             </RouterLink>
           </div>
           <article class="team-gallery__item team-gallery__item--large">
-            <img :src="teamPhotoOne" alt="Teamfoto van ZVK Onder Den Toren Veulen" />
+            <img
+              :src="teamPhotoOne"
+              alt="Teamfoto van ZVK Onder Den Toren Veulen"
+              class="js-lightbox-trigger"
+            />
           </article>
           <article class="team-gallery__item">
-            <img :src="teamPhotoTwo" alt="Tweede teamfoto van ZVK Onder Den Toren Veulen" />
+            <img
+              :src="teamPhotoTwo"
+              alt="Tweede teamfoto van ZVK Onder Den Toren Veulen"
+              class="js-lightbox-trigger"
+            />
           </article>
         </div>
       </div>
@@ -181,7 +195,7 @@
                 <img
                   :src="eindhovenGroupImage"
                   alt="Groepsfoto van ODT tijdens de uitstap naar Eindhoven"
-                  class="home-showcase-feature__image"
+                  class="home-showcase-feature__image js-lightbox-trigger"
                 />
               </div>
             </article>
@@ -236,7 +250,11 @@
         <div class="transfer-grid">
           <article v-for="item in transfers" :key="item.name" class="transfer-card">
             <div class="transfer-card__image-wrap">
-              <img :src="item.image" :alt="`Transferfoto van ${item.name}`" class="transfer-card__image" />
+              <img
+                :src="item.image"
+                :alt="`Transferfoto van ${item.name}`"
+                class="transfer-card__image js-lightbox-trigger"
+              />
             </div>
 
             <div class="transfer-card__body">
@@ -294,7 +312,7 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeUnmount, ref, watch } from 'vue';
+import { onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { RouterLink } from 'vue-router';
 import SectionTitle from '@/components/SectionTitle.vue';
 import { agenda, clubValues, sponsors, standings, teamName, transfers } from '@/data/clubData';
@@ -320,6 +338,11 @@ const currentTeamStanding =
 const homeStandings = standings.slice(0, 5);
 const featuredSponsors = sponsors.filter((sponsor) => sponsor.category === 'Hoofdsponsor');
 const selectedTransfer = ref<TransferUpdate | null>(null);
+const hasScrolled = ref(false);
+
+const handleScroll = () => {
+  hasScrolled.value = window.scrollY > 24;
+};
 
 watch(selectedTransfer, (value) => {
   document.body.classList.toggle('has-transfer-modal', Boolean(value));
@@ -327,6 +350,12 @@ watch(selectedTransfer, (value) => {
 
 onBeforeUnmount(() => {
   document.body.classList.remove('has-transfer-modal');
+  window.removeEventListener('scroll', handleScroll);
+});
+
+onMounted(() => {
+  handleScroll();
+  window.addEventListener('scroll', handleScroll, { passive: true });
 });
 
 const toMatchDateTime = (date: string, time: string) => new Date(`${date}T${time}:00`);
