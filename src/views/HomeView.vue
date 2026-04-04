@@ -2,6 +2,12 @@
   <div class="home-page">
     <section class="hero-home">
       <div class="hero-home__bg"></div>
+      <div class="hero-home__orbs" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="hero-home__mesh" aria-hidden="true"></div>
       <div class="hero-home__ball"></div>
 
       <div class="hero-home__inner">
