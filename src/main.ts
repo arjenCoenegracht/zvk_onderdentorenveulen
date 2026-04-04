@@ -14,10 +14,13 @@ const app = createApp(App);
 
 app.use(router);
 
-if (redirectPath) {
-  await router.replace(redirectPath);
-}
+const bootstrap = async () => {
+  if (redirectPath) {
+    await router.replace(redirectPath);
+  }
 
-await router.isReady();
+  await router.isReady();
+  app.mount('#app');
+};
 
-app.mount('#app');
+void bootstrap();
