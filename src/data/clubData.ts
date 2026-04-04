@@ -23,10 +23,14 @@ import feyoMotmImage from '@/assets/motm/Feyo Kanga Wolfs.svg';
 import robbeMotmImage from '@/assets/motm/Robbe MOTM.svg';
 import schroyenMotmImage from '@/assets/motm/Schroyen MOTM.svg';
 import yoranMotmImage from '@/assets/motm/Yoran MOTM.svg';
-import chrisNijsSponsorImage from '@/assets/sponsors/Chris Nijs Sponsor.jpg';
-import garageCarSponsorImage from '@/assets/sponsors/Garage Car sponsor.jpg';
-import tPleintjeSponsorImage from '@/assets/sponsors/Frituurtpleintje.jpg';
+import chrisNijsSponsorImage from '@/assets/sponsors/Nijs Chris.svg';
+import garageCarSponsorImage from '@/assets/sponsors/garage car.svg';
+import tPleintjeSponsorImage from '@/assets/sponsors/frituurtpleintje.svg';
 import odtCafeSponsorImage from '@/assets/sponsors/odt cafe logo.svg';
+import hoydonckxSponsorImage from '@/assets/sponsors/Hoydonckx.svg';
+import jumpIntoYourPartySponsorImage from '@/assets/sponsors/jump into your party.svg';
+import kimKnaepenSponsorImage from '@/assets/sponsors/k.k. vloer-tegelwerken.svg';
+import dominicLeebaertsSponsorImage from '@/assets/sponsors/dominic leenaerts.svg';
 import devinTransferImage from '@/assets/transfers/Transfer Devin.jpg';
 
 export const teamName = 'ZVK ODT';
@@ -36,7 +40,7 @@ export const clubValues = [
   'Lawaai maken is een deel van onze tactiek',
   'De supporters entertainen, voetbal is bijzaak',
   'Niemand een makkelijke avond geven',
-  'Samen uit, samen thuis, samen op café'
+  'Samen uit, samen thuis, samen op café',
 ];
 
 export const results: MatchResult[] = [
@@ -277,7 +281,6 @@ export const sponsors: Sponsor[] = [
     details: {
       address: 'Steenweg 93/201,\n 3870 Heers',
       contact: '+32 497 69 14 97',
-      hours: 'nvt.',
       extraInfo:
         'Onze sponsor is een betrouwbare specialist in thuisonderhoud en klusjesdiensten, die klaarstaat voor zowel kleine herstellingen als grotere projecten in en rond de woning. Met oog voor detail en een passie voor vakmanschap zorgt hij ervoor dat elke klus professioneel en efficiënt wordt uitgevoerd.\n\n Of het nu gaat om schilderwerken, kleine renovaties, herstellingen of algemeen onderhoud, onze sponsor biedt een persoonlijke service op maat van de klant. Betrouwbaarheid, kwaliteit en klanttevredenheid staan steeds centraal.\n\n Dankzij zijn jarenlange ervaring en praktische aanpak is hij de ideale partner voor iedereen die zorgeloos wil genieten van een goed onderhouden woning.',
     },
@@ -290,39 +293,92 @@ export const sponsors: Sponsor[] = [
     image: garageCarSponsorImage,
     details: {
       address: 'Bovelingenstraat 195,\n 3870 Heers',
-      contact: '+32 495 20 85 97 info@garagekar.be',
-      hours: 'Enkel op afspraak',
+      contact: '+32 495 20 85 97 \ninfo@garagekar.be',
+      website: 'www.garagekar.be',
       extraInfo:
         'Garage KAR is al meer dan 20 jaar specialist in onderhoud en herstellingen van alle automerken. Ze staan voor een sterke prijs-kwaliteitsverhouding, duidelijke offertes op voorhand en persoonlijke service zonder verrassingen.\n\nBij Garage KAR ben je geen nummer. Het atelier is open en transparant, en omdat ze enkel op afspraak werken, krijg je de tijd en service die je verdient. Ook avond- en weekendafspraken zijn mogelijk zonder meerkost, en indien nodig kan er een vervangwagen voorzien worden zodat je mobiel blijft.\n\nDiensten:\n- Onderhoud: klein en groot onderhoud, versnellingsbakolie verversen, aircoreiniging, remvloeistof verversen, koelvloeistof verversen, distributieriemservice, nazicht voor keuring, AdBlue vullen en winter- of zomernazicht.\n- Herstellingen: remschijven en blokken, ruitenwissers, schokdempers, uitlaat, startsysteem en batterij, stuurinrichting, wielophanging, versnellingsbak, koppeling, ruiten herstellen of vervangen en airconditioning.\n- Bandenservice: montage en uitbalanceren, zomer- en winterwissel, herstellen van een lekke band en uitlijning.',
     },
   },
   {
-    name: 'T Pleintje',
-    category: 'Sponsor',
+    name: "'t Pleintje",
+    category: 'Co-sponsor',
     description: "Frituur 't Pleintje is een warme lokale partner waar verse frieten, snacks en persoonlijke service centraal staan.",
     accent: 'night',
     image: tPleintjeSponsorImage,
     details: {
       address: 'Bovelingenstraat 163,\n 3870 Heers',
       contact: 'Contactgegevens nog aan te vullen',
-      hours: 'Elke dag open, behalve donderdag',
       extraInfo:
         "Frituur 't Pleintje in Heers wordt uitgebaat door Tibo, die elke dag klaarstaat om klanten te ontvangen met verse frieten, snacks en een glimlach. Of je nu vaste klant bent of voor het eerst langskomt, de bedoeling blijft altijd hetzelfde: snel, vriendelijk en met kwaliteit bedienen.\n\nSinds de zomer van 2025 is Tibo de trotse eigenaar van het gezellige chaletje op het plein. Met een persoonlijke aanpak en de vertrouwde kwaliteit van meer dan 30 jaar blijft Frituur 't Pleintje een vaste waarde voor iedereen die zin heeft in een snelle en smakelijke hap.\n\nBij Frituur 't Pleintje kan je terecht voor knapperige frieten, klassieke snacks en lekkere verrassingen. De service is persoonlijk, de sfeer is warm en je voelt je er meteen welkom. Een ideale stop voor wie houdt van iets eenvoudigs dat gewoon heel goed gedaan is.",
     },
   },
   {
-    name: 'Onder den Toren',
-    category: 'Sponsor',
+    name: 'Onder den Toren Veulen',
+    category: 'Co-sponsor',
     description: 'Café Onder den Toren in Veulen is een gezellig volkscafé waar dorpssfeer, ontmoeting en een goed glas centraal staan.',
     accent: 'field',
     image: odtCafeSponsorImage,
     details: {
-      address: 'Nieuwe Steenweg 137,\n 3870 Heers',
+      address: 'Nieuwe Steenweg 137,\n3870 Heers',
       contact: '+32 11 48 15 75',
-      hours:
-        'Woensdag - zaterdag open vanaf 14:00\nZon- en feestdagen open vanaf 10:00\nMaandag en dinsdag gesloten',
+
       extraInfo:
-        'Café Onder den Toren in Veulen is een echt volkscafé waar gezelligheid, ontmoeting en dorpssfeer centraal staan. Het is een plek waar mensen samenkomen voor een drankje, een babbel en een fijne avond in een warme, vertrouwde omgeving.\n\n Bierliefhebbers zijn er zeker aan het juiste adres, met een mooi aanbod aan verschillende bieren, waaronder abdijbieren en trappisten. Een van de echte troeven van het café is zonder twijfel de frisse Stella, die bij veel bezoekers bijzonder in de smaak valt. Ook voor een cocktail of aperitief ben je hier welkom.'    },
+        'Café Onder den Toren in Veulen is een echt volkscafé waar gezelligheid, ontmoeting en dorpssfeer centraal staan. Het is een plek waar mensen samenkomen voor een drankje, een babbel en een fijne avond in een warme, vertrouwde omgeving.\n\n Bierliefhebbers zijn er zeker aan het juiste adres, met een mooi aanbod aan verschillende bieren, waaronder abdijbieren en trappisten. Een van de echte troeven van het café is zonder twijfel de frisse Stella, die bij veel bezoekers bijzonder in de smaak valt. Ook voor een cocktail of aperitief ben je hier welkom.',
+    },
+  },
+  {
+    name: 'Hoydonckx',
+    category: 'Tenuesponsor',
+    description: 'Agri-service Hoydonckx is een gevestigde naam in landbouwmachines, onderhoud en snelle panneservice, met decennialange ervaring en een sterke familiale aanpak.',
+    accent: 'sunrise',
+    image: hoydonckxSponsorImage,
+    details: {
+      address: 'Hannuitsesteenweg 399,\n3401 Landen,',
+      contact: '+32 11 88 20 41',
+      website: 'www.hoydonckx.be',
+      extraInfo:
+        'Agri-service Hoydonckx is al sinds de jaren 60 een vaste waarde in de wereld van landbouwmachines. Het verhaal begon toen Louis Hoydonckx een bescheiden werkplaats voor Volvo-tractoren opstartte. In 1980 volgde de oprichting van Hoydonckx bvba samen met Richard Melotte, en in 1988 kwam Ronny Plessers mee aan boord. Met de opening van een nieuw, modern bedrijfspand in 2000 groeide Hoydonckx verder uit tot een gevestigde partner voor landbouwers die rekenen op kwaliteit, techniek en service.\n\nVandaag staat Hoydonckx voor veel meer dan alleen verkoop. Ze bieden tractoren en landbouwmachines aan van sterke merken zoals Valtra, Lemken, Dewulf, Agrifac, Krone en Fliegl, en combineren dat met een uitgebreide onderdelenservice, onderhoud op maat en snelle herstellingen op locatie. Hun goed uitgeruste werkplaats, ruime magazijn en servicevoertuigen zorgen ervoor dat klanten snel weer verder kunnen wanneer elke werkdag telt.\n\nWat Hoydonckx echt typeert, is de combinatie van technische vakkennis en een warme, familiale aanpak. Het team bestaat uit ervaren en goed opgeleide medewerkers die landbouw door en door begrijpen en voortdurend blijven bijscholen. Of het nu gaat om een dringende panne, preventief onderhoud, onderdelen of advies rond machines: bij Agri-service Hoydonckx draait alles om betrouwbaarheid, klantgerichtheid en meedenken met de mensen op het veld.',
+    },
+  },
+  {
+    name: 'Jump Into Your Party',
+    category: 'Tenuesponsor',
+    description: 'Jump Into Your Party verhuurt springkastelen, XXL-spellen en feestattracties voor kinderfeesten en events, met een flexibele service vanuit Heers.',
+    accent: 'night',
+    image: jumpIntoYourPartySponsorImage,
+    details: {
+      address: 'Bovelingenstraat 177A / 2,\n3870 Mechelen-Bovelingen (Heers)',
+      contact: '0494 70 30 71\nnickboffin@hotmail.com',
+      website: 'www.jumpintoyourparty.be',
+      extraInfo:
+        'Jump Into Your Party is een lokale feestpartner uit Heers die zich focust op de verhuur van springkastelen, spellen en attracties voor feestjes, communies en evenementen. Op de site vind je onder meer springkastelen, XXL-spellen en andere speelelementen voor kinderen, telkens met een duidelijke focus op gebruiksgemak en speelplezier.\n\nDe werking is heel praktisch opgezet: reservaties worden bevestigd per mail, levering en plaatsing gebeuren door Jump Into Your Party zelf, en binnen een straal van 20 kilometer rond Heers is levering gratis. Op de website vermelden ze ook een slechtweergarantie, waardoor annuleren door regen tot kort voor vertrek mogelijk blijft. Dat maakt hen een toegankelijke en flexibele partner voor gezinnen en organisatoren die zonder veel gedoe iets leuk willen voorzien.\n\nJump Into Your Party ondersteunt ODT als tenuesponsor en past perfect bij de warme, lokale uitstraling van de club. Met hun focus op plezier, service en vlotte organisatie zijn ze niet alleen zichtbaar op het shirt, maar ook een sponsor die echt iets herkenbaars en sympathieks toevoegt aan de ploegwerking.',
+    },
+  },
+  {
+    name: 'Kim Knaepen Tegelwerken',
+    category: 'Tenuesponsor',
+    description: 'K.K. vloer-tegel en klusjeswerken uit Heers staat voor verzorgd tegelwerk, correcte prijzen en een betrouwbare service bij renovatie- en klusprojecten.',
+    accent: 'field',
+    image: kimKnaepenSponsorImage,
+    details: {
+      address: 'Dreefstraat 15,\n3870 Heers',
+      contact: '011 18 56 24\nkim.knaepen@hotmail.be',
+      extraInfo:
+        'K.K. vloer-tegel en klusjeswerken is een professionele vakman uit Heers die gespecialiseerd is in tegelwerken en allerlei klus- en renovatiewerken. Vanuit Mechelen-Bovelingen werkt de firma voor klanten in de regio Heers en Nieuwerkerken, met een duidelijke focus op netheid, stiptheid en degelijk afgewerkt werk.\n\nDe kern van de activiteiten ligt bij het plaatsen van vloer- en wandtegels, maar daarnaast kan je ook rekenen op K.K. voor diverse klusjes en algemene renovatiewerken. Die combinatie maakt het een praktische partner voor mensen die iemand zoeken die niet alleen mooi werk aflevert, maar ook correct communiceert en afspraken nakomt.\n\nKlanten waarderen K.K. vloer-tegel en klusjeswerken vooral om het vakmanschap, de vriendelijke aanpak en de correcte prijzen. Als tenuesponsor van ODT ondersteunt de firma niet alleen de ploeg op wedstrijddagen, maar ook de warme, lokale werking van de club.',
+    },
+  },
+  {
+    name: 'Dominic Leenaerts Fruit',
+    category: 'Tenuesponsor',
+    description: 'Dominic Leenaerts Fruit staat voor verse producten, een lokale aanpak en een sponsorengagement dat perfect past bij de warme sfeer rond ODT.',
+    accent: 'sunrise',
+    image: dominicLeebaertsSponsorImage,
+    details: {
+      address: 'Nog aan te vullen',
+      contact: 'Nog aan te vullen',
+      extraInfo:
+        'Dominic Leenaerts Fruit is een lokale partner die mooi aansluit bij het karakter van de club: vertrouwd in de streek, dicht bij de mensen en verbonden met het dagelijkse leven in de buurt.\n\nAls tenuesponsor helpt Dominic Leenaerts Fruit mee om ODT sterk en verzorgd voor de dag te laten komen, zowel op als naast het veld. Zulke sponsors zijn belangrijk voor een club als ODT, omdat ze niet alleen zichtbaar zijn op de uitrusting, maar ook mee tonen dat lokale ondernemers achter de ploeg en haar werking staan.\n\nMet Dominic Leenaerts Fruit erbij krijgt ODT er een sponsor bij die perfect past in het rijtje van warme, regionale partners waarop de club kan bouwen. Het is precies die lokale betrokkenheid die de sfeer rond Onder den Toren mee maakt tot wat ze is.',
+    },
   },
 ];
 
@@ -399,7 +455,7 @@ export const squadPlayers: SquadPlayer[] = [
     customStats: [
       { label: 'Goals', value: 1 },
       { label: 'Kapotte benen', value: '1,5' },
-      { label: 'Aantal keren gereden', value: '∞' },
+      { label: 'Buiten in slaap gevallen', value: '1 keer' },
       { label: 'Minuten op de bank', value: 842 },
     ],
   },
@@ -416,7 +472,7 @@ export const squadPlayers: SquadPlayer[] = [
       { label: 'Goals', value: 4 },
       { label: 'Bokken gedronken', value: 155 },
       { label: 'Potjes tijerbalsem', value: 15 },
-      { label: 'Liters gezweet', value: '20.000L' },
+      { label: 'Liters gezweet', value: '157.670' },
     ],
   },
   {

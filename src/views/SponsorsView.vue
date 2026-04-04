@@ -19,39 +19,48 @@
     </section>
 
     <section class="section-block">
-      <div class="container sponsor-grid sponsor-grid--wide">
-        <article
-          v-for="sponsor in sponsors"
-          :key="sponsor.name"
-          class="sponsor-card sponsor-card--styled"
-          :data-accent="sponsor.accent"
-          :data-sponsor="sponsor.name"
+      <div class="container">
+        <section
+          v-for="group in sponsorGroups"
+          :key="group.category"
+          class="sponsor-section"
         >
-          <div v-if="sponsor.image" class="sponsor-card__image-wrap">
-            <img
-              :src="sponsor.image"
-              :alt="`Sponsorbeeld van ${sponsor.name}`"
-              :class="[
-                'sponsor-card__image',
-                'js-lightbox-trigger',
-                {
-                  'sponsor-card__image--pleintje': sponsor.name === 'T Pleintje',
-                  'sponsor-card__image--odt-cafe': sponsor.name === 'Onder den Toren',
-                },
-              ]"
-            />
+          <div class="section-heading sponsor-section__heading">
+            <div>
+              <p class="section-kicker">{{ group.category }}</p>
+              <h2>{{ group.title }}</h2>
+            </div>
+            <p>{{ group.description }}</p>
           </div>
-          <p class="section-kicker">{{ sponsor.category }}</p>
-          <h3>{{ sponsor.name }}</h3>
-          <p>{{ sponsor.description }}</p>
-          <button
-            type="button"
-            class="text-link sponsor-card__button"
-            @click="selectedSponsor = sponsor"
-          >
-            Meer over deze partner
-          </button>
-        </article>
+
+          <div class="sponsor-grid sponsor-grid--wide">
+            <article
+              v-for="sponsor in sponsorsByCategory[group.category]"
+              :key="sponsor.name"
+              class="sponsor-card sponsor-card--styled"
+              :data-accent="sponsor.accent"
+              :data-sponsor="sponsor.name"
+            >
+              <div v-if="sponsor.image" class="sponsor-card__image-wrap">
+                <img
+                  :src="sponsor.image"
+                  :alt="`Sponsorbeeld van ${sponsor.name}`"
+                  :class="getSponsorImageClasses(sponsor.name)"
+                />
+              </div>
+              <p class="section-kicker">{{ sponsor.category }}</p>
+              <h3>{{ sponsor.name }}</h3>
+              <p>{{ sponsor.description }}</p>
+              <button
+                type="button"
+                class="text-link sponsor-card__button"
+                @click="selectedSponsor = sponsor"
+              >
+                Meer over deze partner
+              </button>
+            </article>
+          </div>
+        </section>
       </div>
     </section>
 
@@ -88,14 +97,7 @@
             <img
               :src="selectedSponsor.image"
               :alt="`Sponsorbeeld van ${selectedSponsor.name}`"
-              :class="[
-                'modal-card__image',
-                'js-lightbox-trigger',
-                {
-                  'modal-card__image--pleintje': selectedSponsor.name === 'T Pleintje',
-                  'modal-card__image--odt-cafe': selectedSponsor.name === 'Onder den Toren',
-                },
-              ]"
+              :class="getModalImageClasses(selectedSponsor.name)"
             />
           </div>
 
@@ -108,9 +110,18 @@
               <span>Contact</span>
               <strong>{{ selectedSponsor.details?.contact ?? 'Nog niet ingevuld' }}</strong>
             </div>
-            <div class="modal-meta-item">
-              <span>Openingsuren</span>
-              <strong>{{ selectedSponsor.details?.hours ?? 'Nog niet ingevuld' }}</strong>
+            <div v-if="selectedSponsor.details?.website" class="modal-meta-item">
+              <span>Website</span>
+              <strong>
+                <a
+                  :href="toWebsiteUrl(selectedSponsor.details.website)"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="modal-meta-link"
+                >
+                  {{ selectedSponsor.details.website }}
+                </a>
+              </strong>
             </div>
           </div>
 
@@ -130,15 +141,75 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, onBeforeUnmount, ref, watch } from 'vue';
 import { sponsors } from '@/data/clubData';
 import type { Sponsor } from '@/types';
 
 const selectedSponsor = ref<Sponsor | null>(null);
+
+watch(selectedSponsor, (value) => {
+  document.body.classList.toggle('has-modal-open', Boolean(value));
+});
+
+onBeforeUnmount(() => {
+  document.body.classList.remove('has-modal-open');
+});
+
+const sponsorGroups = [
+  {
+    title: 'Hoofdsponsors',
+    category: 'Hoofdsponsor',
+    description: 'Deze partners dragen het zwaarste stuk van de clubwerking en staan ook mee op de homepagina.',
+  },
+  {
+    title: 'Co-sponsors',
+    category: 'Co-sponsor',
+    description: 'Lokale partners die ODT mee ondersteunen en stevig verankerd zijn in de sfeer rond de club.',
+  },
+  {
+    title: 'Tenuesponsors',
+    category: 'Tenuesponsor',
+    description: 'Deze namen staan mee achter de ploeg op wedstrijddagen en helpen de outfit van ODT mogelijk maken.',
+  },
+] as const;
+
+const sponsorsByCategory = computed(() =>
+  Object.fromEntries(
+    sponsorGroups.map((group) => [
+      group.category,
+      sponsors.filter((sponsor) => sponsor.category === group.category),
+    ]),
+  ) as Record<string, Sponsor[]>,
+);
+
+const getSponsorImageClasses = (name: string) => [
+  'sponsor-card__image',
+  'js-lightbox-trigger',
+  {
+    'sponsor-card__image--pleintje': name === "'t Pleintje",
+    'sponsor-card__image--nijs-chris': name === 'Nijs Chris',
+    'sponsor-card__image--kim-knaepen': name === 'Kim Knaepen Tegelwerken',
+    'sponsor-card__image--odt-cafe': name === 'Onder den Toren Veulen',
+  },
+];
+
+const getModalImageClasses = (name: string) => [
+  'modal-card__image',
+  'js-lightbox-trigger',
+  {
+    'modal-card__image--pleintje': name === "'t Pleintje",
+    'modal-card__image--nijs-chris': name === 'Nijs Chris',
+    'modal-card__image--kim-knaepen': name === 'Kim Knaepen Tegelwerken',
+    'modal-card__image--odt-cafe': name === 'Onder den Toren Veulen',
+  },
+];
 
 const formatSponsorText = (text: string) =>
   text
     .split('\n\n')
     .map((paragraph) => paragraph.trim())
     .filter(Boolean);
+
+const toWebsiteUrl = (value: string) =>
+  value.startsWith('http://') || value.startsWith('https://') ? value : `https://${value}`;
 </script>

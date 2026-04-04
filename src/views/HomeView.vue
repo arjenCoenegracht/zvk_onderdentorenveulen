@@ -234,6 +234,10 @@
                     :class="[
                       'home-sponsor-highlights__image',
                       'js-lightbox-trigger',
+                      {
+                        'home-sponsor-highlights__image--garage-kar': sponsor.name === 'Garage Kar',
+                        'home-sponsor-highlights__image--nijs-chris': sponsor.name === 'Nijs Chris',
+                      },
                     ]"
                   />
                 </div>
@@ -351,10 +355,12 @@ const handleScroll = () => {
 };
 
 watch(selectedTransfer, (value) => {
+  document.body.classList.toggle('has-modal-open', Boolean(value));
   document.body.classList.toggle('has-transfer-modal', Boolean(value));
 });
 
 onBeforeUnmount(() => {
+  document.body.classList.remove('has-modal-open');
   document.body.classList.remove('has-transfer-modal');
   window.removeEventListener('scroll', handleScroll);
 });

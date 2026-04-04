@@ -29,7 +29,7 @@ export interface Sponsor {
     address: string;
     extraInfo: string;
     contact?: string;
-    hours?: string;
+    website?: string;
   };
 }
 

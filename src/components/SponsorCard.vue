@@ -40,8 +40,10 @@ const imageClasses = computed(() => [
   'sponsor-card__image',
   'js-lightbox-trigger',
   {
-    'sponsor-card__image--pleintje': props.sponsor.name === 'T Pleintje',
-    'sponsor-card__image--odt-cafe': props.sponsor.name === 'Onder den Toren',
+    'sponsor-card__image--pleintje': props.sponsor.name === "'t Pleintje",
+    'sponsor-card__image--nijs-chris': props.sponsor.name === 'Nijs Chris',
+    'sponsor-card__image--kim-knaepen': props.sponsor.name === 'Kim Knaepen Tegelwerken',
+    'sponsor-card__image--odt-cafe': props.sponsor.name === 'Onder den Toren Veulen',
   },
 ]);
 </script>

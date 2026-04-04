@@ -28,6 +28,7 @@ body {
   background-attachment: fixed;
   overflow-x: hidden;
 }
+body.has-modal-open,
 body.has-transfer-modal,
 body.has-image-lightbox {
   overflow: hidden;
@@ -767,34 +768,31 @@ button { font: inherit; }
   gap: 1.5rem;
 }
 .sponsor-grid--wide { grid-template-columns: repeat(3, minmax(0,1fr)); }
+.sponsor-section + .sponsor-section {
+  margin-top: 3.2rem;
+}
+.sponsor-section__heading {
+  margin-bottom: 1.5rem;
+}
+.sponsor-section__heading p:last-child {
+  max-width: 42rem;
+}
 .sponsor-card[data-accent='sunrise'] { border-top: 3px solid var(--rood); }
 .sponsor-card[data-accent='field'] { border-top: 3px solid var(--goud); }
 .sponsor-card[data-accent='night'] { border-top: 3px solid #666; }
 .sponsor-card__image-wrap {
   margin: -1rem -1rem 1rem;
   overflow: hidden;
-  aspect-ratio: 16 / 10;
-  background: rgba(255,255,255,.03);
+  height: 240px;
+  background: #fff;
   border-bottom: 1px solid rgba(255,255,255,.06);
 }
 .sponsor-card__image {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-}
-.sponsor-card__image--garage-kar,
-.modal-card__image--garage-kar {
   object-fit: contain;
   object-position: center;
-  padding: .5rem;
-  background: #fff;
-}
-.sponsor-card[data-accent='field'] .sponsor-card__image-wrap {
-  background: #fff;
-}
-.sponsor-card[data-accent='field'] .sponsor-card__image {
-  object-fit: contain;
   padding: 1rem;
   background: #fff;
 }
@@ -882,38 +880,36 @@ button { font: inherit; }
   overflow: hidden;
   border: 1px solid rgba(255,255,255,.08);
   border-radius: 14px;
-  background: rgba(255,255,255,.03);
+  background: #fff;
   aspect-ratio: 16 / 7;
 }
 .modal-card__image {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  background: transparent;
+  object-fit: contain;
+  object-position: center;
+  padding: 1rem;
+  background: #fff;
 }
 .modal-card__image--transfer {
   object-fit: cover;
   object-position: center 28%;
+  padding: 0;
+  background: transparent;
 }
-.modal-card__image--pleintje {
-  object-fit: contain;
-  object-position: center;
-  padding: 1.9rem;
-  background: #fff;
+.sponsor-card__image--nijs-chris,
+.modal-card__image--nijs-chris {
+  padding: .28rem .5rem;
+  transform: scale(1.07);
+  transform-origin: center;
+  background: #000;
 }
-.sponsor-card__image--pleintje {
-  object-fit: contain;
-  object-position: center;
-  padding: 1.7rem;
-  background: #fff;
-}
-.sponsor-card__image--odt-cafe,
-.modal-card__image--odt-cafe {
-  object-fit: contain;
-  object-position: center;
-  padding: .35rem;
-  background: #fff;
+.sponsor-card__image--kim-knaepen,
+.modal-card__image--kim-knaepen {
+  padding: .26rem .5rem;
+  transform: scale(1.09);
+  transform-origin: center;
 }
 .modal-card__meta {
   display: grid;
@@ -939,6 +935,16 @@ button { font: inherit; }
   font-size: 1rem;
   line-height: 1.6;
   white-space: pre-line;
+}
+.modal-meta-link {
+  color: var(--wit);
+  text-decoration: underline;
+  text-decoration-color: rgba(245,240,232,.35);
+  text-underline-offset: .14em;
+  word-break: break-word;
+}
+.modal-meta-link:hover {
+  text-decoration-color: var(--rood);
 }
 .modal-card__panel p {
   margin: 1rem 0 0;
@@ -1119,18 +1125,10 @@ button { font: inherit; }
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-}
-.home-sponsor-highlights__image--contain {
-  object-fit: contain;
-  padding: .35rem;
-  background: #fff;
-}
-.home-sponsor-highlights__image--chris-nijs {
   object-fit: contain;
   object-position: center;
-  padding: .45rem;
-  background: #000;
+  padding: .5rem;
+  background: #fff;
 }
 .home-sponsor-highlights__item p {
   margin: 0;
@@ -1414,7 +1412,9 @@ button { font: inherit; }
   .mini-stat strong { font-size: 1.35rem; }
   .trip-card__body h3, .transfer-card__body h3 { font-size: 2rem; }
   .trip-placeholder { font-size: 2.6rem; }
-  .sponsor-card__image-wrap { aspect-ratio: 16 / 9; }
+  .sponsor-section + .sponsor-section {
+    margin-top: 2.4rem;
+  }
   .competition-layout { gap: 1rem; }
   .match-line {
     padding: .85rem;
@@ -1424,7 +1424,6 @@ button { font: inherit; }
   .match-line__tag { font-size: .68rem; }
   .match-line__team { font-size: .96rem; }
   .match-line__score { font-size: 1.35rem; }
-  .sponsor-card__image-wrap { aspect-ratio: 16 / 9; }
   .table-wrap {
     overflow-x: hidden;
     margin: 0;
@@ -1494,7 +1493,6 @@ button { font: inherit; }
   .standings-table th:nth-child(2) {
     width: 44%;
   }
-  .sponsor-card__image-wrap { aspect-ratio: 16 / 10; }
   .standings-table td:nth-child(3),
   .standings-table th:nth-child(3),
   .standings-table td:nth-child(4),
@@ -1510,7 +1508,6 @@ button { font: inherit; }
   }
   .match-line__team { font-size: .9rem; }
   .match-line__score { font-size: 1.2rem; }
-  .sponsor-card__image-wrap { aspect-ratio: 16 / 10; }
 }
 
 /* Finetune pass */
@@ -1569,6 +1566,26 @@ button { font: inherit; }
   .hero-subtitle {
     max-width: 22ch;
     line-height: 1.35;
+  }
+
+  .sponsor-card__image--nijs-chris,
+  .modal-card__image--nijs-chris {
+    padding: .04rem .48rem;
+    transform: scale(1.08);
+    transform-origin: center;
+    background: #000;
+  }
+
+  .home-sponsor-highlights__image--nijs-chris {
+    padding: .28rem .28rem .08rem;
+    transform: scale(1.05);
+    transform-origin: center;
+  }
+
+  .home-sponsor-highlights__image--garage-kar {
+    padding: .18rem;
+    transform: scale(1.08);
+    transform-origin: center;
   }
 
   .home-grid-two {

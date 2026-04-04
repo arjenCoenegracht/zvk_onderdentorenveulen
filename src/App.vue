@@ -111,6 +111,7 @@ watch(
 );
 
 watch(lightboxImage, (value) => {
+  document.body.classList.toggle('has-modal-open', Boolean(value));
   document.body.classList.toggle('has-image-lightbox', Boolean(value));
 });
 
@@ -153,6 +154,7 @@ watch(
 );
 
 onBeforeUnmount(() => {
+  document.body.classList.remove('has-modal-open');
   document.body.classList.remove('has-image-lightbox');
 });
 </script>

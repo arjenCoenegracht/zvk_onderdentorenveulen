@@ -36,7 +36,6 @@
         </div>
 
         <div class="callout trip-summary">
-          <h3>Zo'n dag waar de foto's nog eens extra bewijzen dat ODT meer is dan alleen voetbal.</h3>
         </div>
       </div>
     </section>
