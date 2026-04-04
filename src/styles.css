@@ -1381,9 +1381,6 @@ button { font: inherit; }
   .standings-table__extra {
     display: none;
   }
-  .standings-table__rank {
-    display: none;
-  }
 }
 @media (max-width: 480px) {
   .site-nav__inner { gap: .75rem; }
