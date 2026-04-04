@@ -10,4 +10,14 @@ if (redirectPath) {
   window.history.replaceState(null, '', redirectPath);
 }
 
-createApp(App).use(router).mount('#app');
+const app = createApp(App);
+
+app.use(router);
+
+if (redirectPath) {
+  await router.replace(redirectPath);
+}
+
+await router.isReady();
+
+app.mount('#app');
