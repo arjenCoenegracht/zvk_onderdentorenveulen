@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '@/views/HomeView.vue';
 import CompetitionView from '@/views/CompetitionView.vue';
 import PlayersView from '@/views/PlayersView.vue';
@@ -8,9 +8,10 @@ import TripsView from '@/views/TripsView.vue';
 import EindhovenView from '@/views/EindhovenView.vue';
 
 const router = createRouter({
-  history: createWebHashHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    { path: '/', name: 'home', component: HomeView },
+    { path: '/', redirect: '/home' },
+    { path: '/home', name: 'home', component: HomeView },
     { path: '/competitie', name: 'competition', component: CompetitionView },
     { path: '/spelers', name: 'players', component: PlayersView },
     { path: '/sponsors', name: 'sponsors', component: SponsorsView },

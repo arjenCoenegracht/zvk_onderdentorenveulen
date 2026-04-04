@@ -32,11 +32,11 @@ import devinTransferImage from '@/assets/transfers/Transfer Devin.jpg';
 export const teamName = 'ZVK ODT';
 
 export const clubValues = [
-  'Inzet op en naast het veld',
-  'Altijd ambiance op en naast het veld',
-  'De meeste en luidste supporters van de reeks',
+  'Altijd inzet, ook al werkt het lichaam niet altijd mee',
+  'Lawaai maken is een deel van onze tactiek',
+  'De supporters entertainen, voetbal is bijzaak',
   'Niemand een makkelijke avond geven',
-  'Samen uit, samen thuis'
+  'Samen uit, samen thuis, samen op café'
 ];
 
 export const results: MatchResult[] = [
