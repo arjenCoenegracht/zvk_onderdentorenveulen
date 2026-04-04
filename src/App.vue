@@ -75,6 +75,7 @@
         <div class="site-footer__brand">
           <strong>ZVK Onder Den Toren Veulen</strong>
           <span>Heers, Belgie</span>
+          <a href="mailto:info@zvk-onderdentorenveulen.be">info@zvk-onderdentorenveulen.be</a>
         </div>
 
         <nav class="site-footer__links" aria-label="Footer navigatie">
@@ -86,7 +87,12 @@
           <RouterLink to="/uitstapjes">Uitstapjes</RouterLink>
         </nav>
 
-        <p class="site-footer__copy">&copy; 2026 ZVK ODT</p>
+        <div class="site-footer__contact">
+          <a class="site-footer__mail-cta" href="mailto:info@zvk-onderdentorenveulen.be">
+            Word sponsor
+          </a>
+          <p class="site-footer__copy">&copy; 2026 ZVK ODT</p>
+        </div>
       </div>
     </footer>
   </div>

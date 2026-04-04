@@ -471,7 +471,7 @@ export const squadPlayers: SquadPlayer[] = [
     customStats: [
       { label: 'Goals', value: 4 },
       { label: 'Bokken gedronken', value: 155 },
-      { label: 'Potjes tijerbalsem', value: 15 },
+      { label: 'Potjes tijgerbalsem', value: 15 },
       { label: 'Liters gezweet', value: '157.670' },
     ],
   },

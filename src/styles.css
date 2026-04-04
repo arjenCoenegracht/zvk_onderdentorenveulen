@@ -186,6 +186,27 @@ button { font: inherit; }
   color: rgba(245,240,232,.58);
   text-align: right;
 }
+.site-footer__contact {
+  display: grid;
+  justify-items: end;
+  gap: .65rem;
+}
+.site-footer__mail-cta {
+  color: var(--wit);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .84rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: .8rem 1.25rem;
+  border: 1px solid rgba(255,255,255,.14);
+  background: linear-gradient(180deg, #d11212 0%, var(--rood) 100%);
+  box-shadow: 0 12px 24px rgba(153,0,0,.24);
+}
+.site-footer__mail-cta:hover {
+  color: var(--wit);
+  filter: brightness(1.04);
+}
 
 .page, .home-page { display: grid; gap: 0; }
 
@@ -777,6 +798,19 @@ button { font: inherit; }
 .sponsor-section__heading p:last-child {
   max-width: 42rem;
 }
+.sponsor-cta {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.25rem;
+  align-items: center;
+}
+.sponsor-cta p {
+  max-width: 44rem;
+}
+.sponsor-cta__button {
+  white-space: nowrap;
+}
 .sponsor-card[data-accent='sunrise'] { border-top: 3px solid var(--rood); }
 .sponsor-card[data-accent='field'] { border-top: 3px solid var(--goud); }
 .sponsor-card[data-accent='night'] { border-top: 3px solid #666; }
@@ -1335,6 +1369,9 @@ button { font: inherit; }
     flex-wrap: wrap;
     justify-content: center;
   }
+  .site-footer__contact {
+    justify-items: center;
+  }
   .site-footer__copy {
     text-align: center;
   }
@@ -1414,6 +1451,9 @@ button { font: inherit; }
   .trip-placeholder { font-size: 2.6rem; }
   .sponsor-section + .sponsor-section {
     margin-top: 2.4rem;
+  }
+  .sponsor-cta {
+    grid-template-columns: 1fr;
   }
   .competition-layout { gap: 1rem; }
   .match-line {

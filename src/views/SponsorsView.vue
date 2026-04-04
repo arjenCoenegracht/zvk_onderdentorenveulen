@@ -61,6 +61,21 @@
             </article>
           </div>
         </section>
+
+        <section class="sponsor-cta panel panel--red">
+          <div>
+            <p class="section-kicker">Samenwerken</p>
+            <h2>Word sponsor van ODT</h2>
+            <p>
+              Zin om mee achter de ploeg te staan? Stuur ons gerust een mail en we bekijken samen
+              wat mogelijk is.
+            </p>
+          </div>
+
+          <a class="button button-primary sponsor-cta__button" href="mailto:info@zvk-onderdentorenveulen.be">
+            Word sponsor
+          </a>
+        </section>
       </div>
     </section>
 
@@ -159,17 +174,17 @@ const sponsorGroups = [
   {
     title: 'Hoofdsponsors',
     category: 'Hoofdsponsor',
-    description: 'Deze partners dragen het zwaarste stuk van de clubwerking en staan ook mee op de homepagina.',
+    description: 'Deze partners geven ODT de grootste duw en zijn mee het fundament van de clubwerking.',
   },
   {
     title: 'Co-sponsors',
     category: 'Co-sponsor',
-    description: 'Lokale partners die ODT mee ondersteunen en stevig verankerd zijn in de sfeer rond de club.',
+    description: 'Lokale sponsors die mee bouwen aan de sfeer, de omkadering en het dagelijkse leven rond de ploeg.',
   },
   {
     title: 'Tenuesponsors',
     category: 'Tenuesponsor',
-    description: 'Deze namen staan mee achter de ploeg op wedstrijddagen en helpen de outfit van ODT mogelijk maken.',
+    description: 'Deze partners geven ODT extra steun en zichtbaarheid, en horen mee bij de warme lokale omkadering van de club.',
   },
 ] as const;
 
