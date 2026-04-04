@@ -191,21 +191,11 @@ button { font: inherit; }
   justify-items: end;
   gap: .65rem;
 }
-.site-footer__mail-cta {
-  color: var(--wit);
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: .84rem;
-  font-weight: 700;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  padding: .8rem 1.25rem;
-  border: 1px solid rgba(255,255,255,.14);
-  background: linear-gradient(180deg, #d11212 0%, var(--rood) 100%);
-  box-shadow: 0 12px 24px rgba(153,0,0,.24);
+.site-footer__contact a {
+  color: rgba(245,240,232,.72);
 }
-.site-footer__mail-cta:hover {
-  color: var(--wit);
-  filter: brightness(1.04);
+.site-footer__contact a:hover {
+  color: var(--rood);
 }
 
 .page, .home-page { display: grid; gap: 0; }
