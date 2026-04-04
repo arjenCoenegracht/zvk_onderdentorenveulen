@@ -57,7 +57,7 @@
         <div class="club-grid">
           <div class="club-text">
             <p>
-              Een bende gasten uit de regio Heers die nog altijd dromen van een profcarriere,
+              Een bende gasten uit de regio Heers die nog altijd dromen van een profcarrière,
               al is de kans groter dat we ooit ontdekt worden aan de toog dan op het veld.
               <br />
               <br />
