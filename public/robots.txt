@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zvk-onderdentorenveulen.be/sitemap.xml
