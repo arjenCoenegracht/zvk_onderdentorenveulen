@@ -47,7 +47,7 @@ router.afterEach((to) => {
   const title = typeof to.meta.title === 'string' ? to.meta.title : DEFAULT_TITLE;
   const description =
     typeof to.meta.description === 'string' ? to.meta.description : DEFAULT_DESCRIPTION;
-  const canonicalPath = to.path === '/' ? '/home' : to.path;
+  const canonicalPath = to.path;
 
   document.title = title;
   ensureMeta('meta[name="description"]', 'name', 'description').content = description;

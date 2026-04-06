@@ -1,7 +1,7 @@
 <template>
   <header class="site-nav">
     <div class="site-nav__inner">
-      <RouterLink to="/home" class="nav-logo">
+      <RouterLink to="/" class="nav-logo">
         <img :src="logoImage" alt="Logo ZVK Onder Den Toren Veulen" class="nav-logo__image" />
         <span class="nav-logo__text">
           <span>ZVK</span>

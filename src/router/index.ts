@@ -10,9 +10,9 @@ import EindhovenView from '@/views/EindhovenView.vue';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    { path: '/', redirect: '/home' },
+    { path: '/home', redirect: '/' },
     {
-      path: '/home',
+      path: '/',
       name: 'home',
       component: HomeView,
       meta: {
