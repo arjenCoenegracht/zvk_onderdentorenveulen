@@ -4,9 +4,9 @@ import router from './router';
 import './styles.css';
 
 const SITE_URL = 'https://zvk-onderdentorenveulen.be';
-const DEFAULT_TITLE = 'ZVK Onder Den Toren Veulen | ODT | Zaalvoetbal in Heers';
+const DEFAULT_TITLE = 'ZVK Onder Den Toren Veulen | Zaalvoetbal';
 const DEFAULT_DESCRIPTION =
-  'Officiële website van ZVK Onder Den Toren Veulen uit Heers met spelers, sponsors, wedstrijden en clubinfo.';
+  'Officiele website van ZVK Onder Den Toren Veulen met spelers, sponsors, wedstrijden en clubinfo.';
 
 const redirectPath = sessionStorage.getItem('redirectPath');
 

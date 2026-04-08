@@ -16,9 +16,9 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
       meta: {
-        title: 'ZVK Onder Den Toren Veulen | ODT | Zaalvoetbal in Heers',
+        title: 'ZVK Onder Den Toren Veulen | Zaalvoetbal',
         description:
-          'Officiële website van ZVK Onder Den Toren Veulen uit Heers. Vind ODT, ZVK ODT, wedstrijden, spelers, sponsors en clubinfo.',
+          'Officiele website van ZVK Onder Den Toren Veulen met wedstrijden, spelers, sponsors en clubinfo.',
       },
     },
     {
@@ -28,7 +28,7 @@ const router = createRouter({
       meta: {
         title: 'Wedstrijden en Klassement | ZVK Onder Den Toren Veulen',
         description:
-          'Bekijk wedstrijden, uitslagen, agenda en klassement van ZVK Onder Den Toren Veulen en ZVK ODT.',
+          'Bekijk wedstrijden, uitslagen, agenda en klassement van ZVK Onder Den Toren Veulen.',
       },
     },
     {
@@ -78,7 +78,7 @@ const router = createRouter({
       meta: {
         title: 'Eindhoven Uitstap | ZVK Onder Den Toren Veulen',
         description:
-          'Foto’s en sfeerbeelden van de uitstap naar Eindhoven van ZVK Onder Den Toren Veulen.',
+          'Fotos en sfeerbeelden van de uitstap naar Eindhoven van ZVK Onder Den Toren Veulen.',
       },
     },
   ],
