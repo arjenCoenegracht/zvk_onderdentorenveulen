@@ -609,25 +609,25 @@ export const agenda: AgendaItem[] = [
   {
     date: '2026-04-20',
     time: '21:00',
-    title: 'Onder Den Toren Veulen vs. BIH United',
+    title: 'ZVK ODT vs. BIH United',
     description: 'Thuiswedstrijd om 21:00.',
   },
   {
     date: '2026-05-04',
     time: '19:00',
-    title: 'FC De Schuddertjes vs. Onder Den Toren Veulen',
+    title: 'FC De Schuddertjes vs. ZVK ODT',
     description: 'Uitwedstrijd om 19:00.',
   },
   {
     date: '2026-05-18',
     time: '19:00',
-    title: 'Onder Den Toren Veulen vs. Ham Hoepertingen',
+    title: 'ZVK ODT vs. Ham Hoepertingen',
     description: 'Thuiswedstrijd om 19:00.',
   },
   {
     date: '2026-06-01',
     time: '19:00',
-    title: 'Dynamo Heers vs. Onder Den Toren Veulen',
+    title: 'Dynamo Heers vs. ZVK ODT',
     description: 'Uitwedstrijd om 19:00.',
   },
 ];
