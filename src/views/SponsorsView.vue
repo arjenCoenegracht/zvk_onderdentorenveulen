@@ -62,19 +62,58 @@
           </div>
         </section>
 
-        <section class="sponsor-cta panel panel--red">
-          <div>
+        <section id="sponsor-form" class="sponsor-cta panel panel--red">
+          <div class="sponsor-cta__intro">
             <p class="section-kicker">Samenwerken</p>
             <h2>Word sponsor van ODT</h2>
             <p>
-              Zin om mee achter de ploeg te staan? Stuur ons gerust een mail en we bekijken samen
-              wat mogelijk is.
+              Vul hieronder kort je gegevens in en klik erna op open mail. Je kan ook het e-mail adres kopieren en zelf een mail uitschrijven.
             </p>
           </div>
 
-          <a class="button button-primary sponsor-cta__button" href="mailto:info@zvk-onderdentorenveulen.be">
-            Word sponsor
-          </a>
+          <form ref="sponsorFormElement" class="sponsor-cta__form" @submit.prevent="openSponsorMail">
+            <label class="sponsor-cta__field">
+              <span>Bedrijf of naam</span>
+              <input v-model.trim="sponsorForm.name" type="text" name="name" required />
+            </label>
+
+            <label class="sponsor-cta__field">
+              <span>E-mailadres</span>
+              <input v-model.trim="sponsorForm.email" type="email" name="email" required />
+            </label>
+
+            <label class="sponsor-cta__field">
+              <span>Telefoon</span>
+              <input v-model.trim="sponsorForm.phone" type="tel" name="phone" />
+            </label>
+
+            <label class="sponsor-cta__field sponsor-cta__field--full">
+              <span>Bericht</span>
+              <textarea
+                v-model.trim="sponsorForm.message"
+                name="message"
+                rows="5"
+                placeholder="Vertel kort hoe je ODT graag wil steunen."
+                required
+              ></textarea>
+            </label>
+
+            <div class="sponsor-cta__actions">
+              <button
+                type="submit"
+                class="button button-primary sponsor-cta__button"
+              >
+                Open mail
+              </button>
+              <button
+                type="button"
+                class="button button-secondary sponsor-cta__secondary"
+                @click="copySponsorEmail"
+              >
+                {{ copyFeedback || 'Kopieer e-mail' }}
+              </button>
+            </div>
+          </form>
         </section>
       </div>
     </section>
@@ -156,11 +195,19 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, ref, watch } from 'vue';
+import { computed, onBeforeUnmount, reactive, ref, watch } from 'vue';
 import { sponsors } from '@/data/clubData';
 import type { Sponsor } from '@/types';
 
 const selectedSponsor = ref<Sponsor | null>(null);
+const sponsorFormElement = ref<HTMLFormElement | null>(null);
+const copyFeedback = ref('');
+const sponsorForm = reactive({
+  name: '',
+  email: '',
+  phone: '',
+  message: '',
+});
 
 watch(selectedSponsor, (value) => {
   document.body.classList.toggle('has-modal-open', Boolean(value));
@@ -199,7 +246,6 @@ const sponsorsByCategory = computed(() =>
 
 const getSponsorImageClasses = (name: string) => [
   'sponsor-card__image',
-  'js-lightbox-trigger',
   {
     'sponsor-card__image--pleintje': name === "'t Pleintje",
     'sponsor-card__image--nijs-chris': name === 'Nijs Chris',
@@ -210,7 +256,6 @@ const getSponsorImageClasses = (name: string) => [
 
 const getModalImageClasses = (name: string) => [
   'modal-card__image',
-  'js-lightbox-trigger',
   {
     'modal-card__image--pleintje': name === "'t Pleintje",
     'modal-card__image--nijs-chris': name === 'Nijs Chris',
@@ -224,6 +269,49 @@ const formatSponsorText = (text: string) =>
     .split('\n\n')
     .map((paragraph) => paragraph.trim())
     .filter(Boolean);
+
+const openSponsorMail = () => {
+  if (!sponsorFormElement.value?.reportValidity()) {
+    return;
+  }
+
+  const formData = new FormData(sponsorFormElement.value);
+  const name = String(formData.get('name') ?? '').trim();
+  const email = String(formData.get('email') ?? '').trim();
+  const phone = String(formData.get('phone') ?? '').trim();
+  const message = String(formData.get('message') ?? '').trim();
+
+  const subject = `Sponsoraanvraag ZVK ODT - ${name || 'website'}`;
+  const body = [
+    'Hallo ZVK ODT,',
+    '',
+    'Via de website wil ik graag meer info over sponsoring.',
+    '',
+    `Bedrijf of naam: ${name || '-'}`,
+    `E-mailadres: ${email || '-'}`,
+    `Telefoon: ${phone || '-'}`,
+    '',
+    'Bericht:',
+    message || '-',
+  ].join('\n');
+
+  window.location.href = `mailto:info@zvk-onderdentorenveulen.be?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+};
+
+const copySponsorEmail = async () => {
+  try {
+    await navigator.clipboard.writeText('info@zvk-onderdentorenveulen.be');
+    copyFeedback.value = 'Gekopieerd';
+    window.setTimeout(() => {
+      copyFeedback.value = '';
+    }, 1800);
+  } catch {
+    copyFeedback.value = 'Kopieren mislukt';
+    window.setTimeout(() => {
+      copyFeedback.value = '';
+    }, 1800);
+  }
+};
 
 const toWebsiteUrl = (value: string) =>
   value.startsWith('http://') || value.startsWith('https://') ? value : `https://${value}`;

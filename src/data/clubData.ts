@@ -374,8 +374,8 @@ export const sponsors: Sponsor[] = [
     accent: 'sunrise',
     image: dominicLeebaertsSponsorImage,
     details: {
-      address: 'Nog aan te vullen',
-      contact: 'Nog aan te vullen',
+      address: 'Steenweg 13, \n3870 Heers',
+      contact: '011 48 25 11',
       extraInfo:
         'Dominic Leenaerts Fruit is een lokale partner die mooi aansluit bij het karakter van de club: vertrouwd in de streek, dicht bij de mensen en verbonden met het dagelijkse leven in de buurt.\n\nAls tenuesponsor helpt Dominic Leenaerts Fruit mee om ODT sterk en verzorgd voor de dag te laten komen, zowel op als naast het veld. Zulke sponsors zijn belangrijk voor een club als ODT, omdat ze niet alleen zichtbaar zijn op de uitrusting, maar ook mee tonen dat lokale ondernemers achter de ploeg en haar werking staan.\n\nMet Dominic Leenaerts Fruit erbij krijgt ODT er een sponsor bij die perfect past in het rijtje van warme, regionale partners waarop de club kan bouwen. Het is precies die lokale betrokkenheid die de sfeer rond Onder den Toren mee maakt tot wat ze is.',
     },

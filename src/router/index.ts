@@ -82,7 +82,15 @@ const router = createRouter({
       },
     },
   ],
-  scrollBehavior() {
+  scrollBehavior(to) {
+    if (to.hash) {
+      return {
+        el: to.hash,
+        top: 96,
+        behavior: 'smooth',
+      };
+    }
+
     return { top: 0 };
   },
 });

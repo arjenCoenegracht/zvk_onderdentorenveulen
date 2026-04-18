@@ -93,14 +93,12 @@
             <img
               :src="teamPhotoOne"
               alt="Teamfoto van ZVK Onder Den Toren Veulen"
-              class="js-lightbox-trigger"
             />
           </article>
           <article class="team-gallery__item">
             <img
               :src="teamPhotoTwo"
               alt="Tweede teamfoto van ZVK Onder Den Toren Veulen"
-              class="js-lightbox-trigger"
             />
           </article>
         </div>
@@ -220,28 +218,26 @@
               </RouterLink>
             </div>
 
-            <div class="home-sponsor-highlights">
+            <div class="sponsor-grid sponsor-grid--home-featured">
               <article
                 v-for="sponsor in featuredSponsors"
                 :key="sponsor.name"
-                class="home-sponsor-highlights__item"
+                class="sponsor-card sponsor-card--styled"
                 :data-accent="sponsor.accent"
               >
-                <div v-if="sponsor.image" class="home-sponsor-highlights__image-wrap">
+                <div v-if="sponsor.image" class="sponsor-card__image-wrap">
                   <img
                     :src="sponsor.image"
-                    :alt="`Logo van ${sponsor.name}`"
-                    :class="[
-                      'home-sponsor-highlights__image',
-                      'js-lightbox-trigger',
-                      {
-                        'home-sponsor-highlights__image--garage-kar': sponsor.name === 'Garage Kar',
-                        'home-sponsor-highlights__image--nijs-chris': sponsor.name === 'Nijs Chris',
-                      },
-                    ]"
+                    :alt="`Sponsorbeeld van ${sponsor.name}`"
+                    :class="getFeaturedSponsorImageClasses(sponsor.name)"
                   />
                 </div>
-                <p>{{ sponsor.name }}</p>
+                <p class="section-kicker">{{ sponsor.category }}</p>
+                <h3>{{ sponsor.name }}</h3>
+                <p>{{ sponsor.description }}</p>
+                <RouterLink to="/sponsors" class="text-link sponsor-card__button">
+                  Bekijk sponsor
+                </RouterLink>
               </article>
             </div>
           </div>
@@ -349,6 +345,13 @@ const homeStandings = standings.slice(0, 5);
 const featuredSponsors = sponsors.filter((sponsor) => sponsor.category === 'Hoofdsponsor');
 const selectedTransfer = ref<TransferUpdate | null>(null);
 const hasScrolled = ref(false);
+
+const getFeaturedSponsorImageClasses = (name: string) => [
+  'sponsor-card__image',
+  {
+    'sponsor-card__image--nijs-chris': name === 'Nijs Chris',
+  },
+];
 
 const handleScroll = () => {
   hasScrolled.value = window.scrollY > 24;
