@@ -11,20 +11,44 @@
         </div>
 
         <aside class="inner-sidebox">
-          <p class="section-kicker">Kort</p>
-          <strong>{{ currentTeamName }}</strong>
-          <span>
-            {{ currentTeamStanding?.points ?? 0 }} punten na
-            {{ currentTeamStanding?.played ?? 0 }} matchen
-          </span>
+          <p class="section-kicker">Seizoen {{ selectedSeason }}</p>
+          <template v-if="isPreviousSeason">
+            <strong>{{ currentTeamName }}</strong>
+            <span>
+              {{ currentTeamStanding?.points ?? 0 }} punten na
+              {{ currentTeamStanding?.played ?? 0 }} matchen
+            </span>
+          </template>
+          <template v-else>
+            <strong>Nieuw seizoen</strong>
+            <span>De kalender en reeksindeling volgen later.</span>
+          </template>
         </aside>
       </div>
     </section>
 
     <section class="section-block">
-      <div class="container competition-layout">
+      <div class="container">
+        <div class="season-toolbar">
+          <label for="season-select">Kies een seizoen</label>
+          <select id="season-select" v-model="selectedSeason" class="season-select">
+            <option value="2026-2027">2026–2027</option>
+            <option value="2025-2026">2025–2026</option>
+          </select>
+        </div>
+
+        <div v-if="!isPreviousSeason" class="panel panel--soft season-empty-state">
+          <p class="section-kicker">Seizoen 2026–2027</p>
+          <h2>Nog geen gegevens beschikbaar.</h2>
+          <p>
+            De wedstrijden en het klassement van het nieuwe seizoen zijn nog niet bekend.
+            Zodra de kalender beschikbaar is, vind je die hier.
+          </p>
+        </div>
+
+        <div v-else class="competition-layout">
         <div class="panel panel--soft competition-panel competition-panel--results">
-          <h3 class="block-title">Wedstrijden</h3>
+          <h3 class="block-title">Wedstrijden 2025–2026</h3>
           <div class="match-listing">
             <article v-for="match in combinedMatches" :key="match.key" class="match-line">
               <span class="match-line__date">{{ match.meta }}</span>
@@ -43,7 +67,7 @@
         </div>
 
         <div class="panel panel--red competition-panel competition-panel--standings">
-          <h3 class="block-title">Klassement</h3>
+          <h3 class="block-title">Eindklassement 2025–2026</h3>
           <div class="table-wrap">
             <table class="standings-table">
               <thead>
@@ -79,13 +103,18 @@
             </table>
           </div>
         </div>
+        </div>
       </div>
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
+import { computed, ref } from 'vue';
 import { agenda, results, standings, teamName } from '@/data/clubData';
+
+const selectedSeason = ref('2026-2027');
+const isPreviousSeason = computed(() => selectedSeason.value === '2025-2026');
 
 const normalizeTeamName = (value: string) =>
   value

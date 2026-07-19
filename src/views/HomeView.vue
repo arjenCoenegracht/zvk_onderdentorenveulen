@@ -42,8 +42,8 @@
     <section id="home-next-section" class="stats-strip">
       <div class="stats-strip__hero">
         <span>Volgende match</span>
-        <strong>{{ nextMatch ? formatMatchTitle(nextMatch.title) : 'Nog niet bekend' }}</strong>
-        <small>{{ nextMatch ? `${formatShortDate(nextMatch.date)} - ${nextMatch.time}` : 'Hou de agenda in de gaten' }}</small>
+        <strong>{{ nextMatch ? formatMatchTitle(nextMatch.title) : 'Seizoen 2026–2027 volgt' }}</strong>
+        <small>{{ nextMatch ? `${formatShortDate(nextMatch.date)} - ${nextMatch.time}` : 'Nog geen nieuwe kalender beschikbaar' }}</small>
       </div>
     </section>
 
@@ -121,6 +121,9 @@
           </div>
 
           <div class="agenda-list">
+            <p v-if="agenda.length === 0" class="home-empty-state">
+              Nog geen wedstrijden beschikbaar voor seizoen 2026–2027.
+            </p>
             <article v-for="item in agenda" :key="item.title" class="agenda-item">
               <span>{{ formatDate(item.date) }}</span>
               <div>
@@ -144,7 +147,7 @@
             </RouterLink>
           </div>
 
-          <div class="table-wrap">
+          <div v-if="homeStandings.length" class="table-wrap">
             <table class="standings-table">
               <thead>
                 <tr>
@@ -168,6 +171,9 @@
               </tbody>
             </table>
           </div>
+          <p v-else class="home-empty-state home-empty-state--light">
+            Nog geen klassement beschikbaar voor seizoen 2026–2027.
+          </p>
         </div>
       </div>
     </section>
@@ -321,27 +327,15 @@
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { RouterLink } from 'vue-router';
 import SectionTitle from '@/components/SectionTitle.vue';
-import { agenda, clubValues, sponsors, standings, teamName, transfers } from '@/data/clubData';
-import type { TransferUpdate } from '@/types';
+import { agenda, clubValues, sponsors, teamName, transfers } from '@/data/clubData';
+import type { StandingRow, TransferUpdate } from '@/types';
 import logoImage from '@/assets/branding/ODT_LOGO.svg';
 import teamPhotoOne from '@/assets/teamfotos/Teamfoto.jpg';
 import teamPhotoTwo from '@/assets/teamfotos/Teamfoto2.jpg';
 import eindhovenGroupImage from '@/assets/trips/eindhoven/Eindhoven_foto_groep.jpg';
 
-const normalizeTeamName = (value: string) =>
-  value
-    .normalize('NFD')
-    .replace(/\p{Diacritic}/gu, '')
-    .toLowerCase();
-
-const teamAliases = ['onder de toren veulen', 'zvk odt', teamName];
-
-const currentTeamStanding =
-  standings.find((row) =>
-    teamAliases.some((alias) => normalizeTeamName(row.team).includes(normalizeTeamName(alias))),
-  ) ?? standings[0];
-
-const homeStandings = standings.slice(0, 5);
+const currentTeamStanding = { team: teamName };
+const homeStandings: StandingRow[] = [];
 const featuredSponsors = sponsors.filter((sponsor) => sponsor.category === 'Hoofdsponsor');
 const selectedTransfer = ref<TransferUpdate | null>(null);
 const hasScrolled = ref(false);

@@ -639,20 +639,7 @@ export const squadPlayers: SquadPlayer[] = [
   },
 ];
 
-export const agenda: AgendaItem[] = [
-  {
-    date: '2026-05-18',
-    time: '19:00',
-    title: 'ZVK ODT vs. Ham Hoepertingen',
-    description: 'Thuiswedstrijd om 19:00.',
-  },
-  {
-    date: '2026-06-01',
-    time: '19:00',
-    title: 'Dynamo Heers vs. ZVK ODT',
-    description: 'Uitwedstrijd om 19:00.',
-  },
-];
+export const agenda: AgendaItem[] = [];
 
 export const transfers: TransferUpdate[] = [
   {
